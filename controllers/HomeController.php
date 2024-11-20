@@ -17,6 +17,11 @@ class HomeController{
     {
         view("clients/product");
     }
+
+    public function store() 
+    {
+        view("clients/store");
+    }
     
 }
 ?>

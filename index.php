@@ -21,6 +21,8 @@ match ($ctl) {
     'checkout' => (new HomeController)->checkout(),
     'blank' => (new HomeController)->blank(),
     'product' => (new HomeController)->product(),
+    'store' => (new HomeController)->store(),
+    
     
     default => "Không tìm thấy file"
 };
