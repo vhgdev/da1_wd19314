@@ -1,27 +1,17 @@
 <?php
-class HomeController{
+
+class HomeController
+{
     public function index()
     {
-        view("clients/home");
-    }
-    public function checkout()
-    {
-        view("clients/checkout");
-    }
-    public function blank()
-    {
-        view("clients/blank");
-    }
+        //lấy các sản phẩm là laptopgaming
+        $laptops = (new Product)->listProductLapGaming();
+        //Lấy các sản phẩm không phải laptopgaming
+        $products = (new Product)->listProductOtherLaptop();
 
-    public function product()
-    {
-        view("clients/product");
-    }
+        //lấy danh mục
+        $categories = (new Category)->all();
 
-    public function store() 
-    {
-        view("clients/store");
+        return view("clients.home", compact('laptops', 'products', 'categories'));
     }
-    
 }
-?>

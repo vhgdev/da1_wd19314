@@ -1,28 +1,23 @@
 <?php
+require_once __DIR__ . "/env.php";
+require_once __DIR__ . "/common/function.php";
+require_once __DIR__ . "/models/BaseModel.php";
+require_once __DIR__ . "/models/Category.php";
+require_once __DIR__ . "/models/Product.php";
 
+require_once __DIR__ . "/controllers/HomeController.php";
+require_once __DIR__ . "/controllers/ProductController.php";
 
-//commons
-
-require_once "common/function.php";
-//models
-
-//controller
-require_once "controllers/HomeController.php";
-
-
-
-$ctl = $_GET['ctl'] ?? "";
+$ctl = $_GET['ctl'] ?? '';
 
 match ($ctl) {
-    //admin
-    
-    //client
-    '' => (new HomeController)->index(),
-    'checkout' => (new HomeController)->checkout(),
-    'blank' => (new HomeController)->blank(),
-    'product' => (new HomeController)->product(),
-    'store' => (new HomeController)->store(),
-    
-    
-    default => "Không tìm thấy file"
+    '', 'home' => (new HomeController)->index(),
+    // 'category' => (new ProductController)->index(),
+    default => view('errors.404'),
 };
+
+/*
+1. Trinh hải Long
+2. Nguyễn Trung Đức
+3. Phan Xuân Đức
+*/

@@ -9,10 +9,10 @@
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">Về chúng tôi</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+								<p>Sản phẩm dự thi môn DỰ ÁN 1</p>
 								<ul class="footer-links">
 									<li><a href="#"><i class="fa fa-map-marker"></i>Trịnh Văn Bô</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+123456789</a></li>
 									<li><a href="#"><i class="fa fa-envelope-o"></i>fptedu@email.com</a></li>
 								</ul>
 							</div>
