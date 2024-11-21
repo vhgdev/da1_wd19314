@@ -78,7 +78,7 @@
 
 			<div class="container mt-5">
 				<div class="row g-4">
-					<?php foreach ($laptops as $pet) : ?>
+					<?php foreach ($laptops as $laptop) : ?>
 						<!-- Box Sản Phẩm -->
 						<div class="col-md-3">
 							<div class="product-box">
