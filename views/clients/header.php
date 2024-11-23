@@ -48,7 +48,7 @@
 					</ul>
 					<ul class="header-links pull-right">
 						<li><a href="#"><i class="fa fa-dollar"></i> VND</a></li>
-						<li><a href="#"><i class="fa fa-user-o"></i> Tài khoản</a></li>
+						<li><a href="index.php?ctl=signin"><i class="fa fa-user-o"></i> Đăng nhập</a></li>
 					</ul>
 				</div>
 			</div>
@@ -75,9 +75,9 @@
 							<div class="header-search">
 								<form>
 									<select class="input-select">
-										<option value="0">Danh mục</option>
-										<option value="1">Laptop</option>
-										<option value="1">Phụ kiện</option>
+										<option value="0" href="">Danh mục</option>
+										<option value="1" href="index.php?ctl=store">Laptop</option>
+										<option value="1" href="index.php?ctl=store">Phụ kiện</option>
 									</select>
 									<input class="input" placeholder="Search here">
 									<button class="search-btn">Tìm kiếm</button>
@@ -170,12 +170,11 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="#">Trang chủ</a></li>
-						<li><a href="#">Khuyến mại</a></li>
-						<li><a href="#">Laptops văn phòng</a></li>
-						<li><a href="#">Laptops gaming</a></li>
-						<li><a href="#">Phụ kiện</a></li>
-						<li><a href="#">Accessories</a></li>
+						<li class="active"><a href="index.php">Trang chủ</a></li>
+						<li><a href="index.php?ctl=store">Danh mục</a></li>
+						<li><a href="index.php?ctl=store">Laptops văn phòng</a></li>
+						<li><a href="index.php?ctl=store">Laptops gaming</a></li>
+						<li><a href="index.php?ctl=store">Phụ kiện</a></li>
 					</ul>
 					<!-- /NAV -->
 				</div>

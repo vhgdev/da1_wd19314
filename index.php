@@ -1,43 +1,17 @@
 <?php
+require_once __DIR__ . "/env.php";
+require_once __DIR__ . "/common/function.php";
+require_once __DIR__ . "/models/BaseModel.php";
+require_once __DIR__ . "/models/Category.php";
+require_once __DIR__ . "/models/Product.php";
 
+require_once __DIR__ . "/controllers/HomeController.php";
+require_once __DIR__ . "/controllers/ProductController.php";
 
-//commons
-
-require_once "common/function.php";
-//models
-require_once "model/BaseModel.php";
-require_once "model/Category.php";
-//controller
-require_once "controllers/HomeController.php";
-
-
-
-$ctl = $_GET['ctl'] ?? "";
-
-//Demo lớp category
-$cate = new Category;
-
-//dữ liệu 
-$data = [
-    'cate_name'=>'msi lỏ',
-    'type' => 0 // type =1 là thú cưng type=0 là sản phẩm
-];
-//Thêm dữ liệu
-// $cate->create($data);
-// cập nhật 
-$cate->update(4 , $data);
-//hiển thị dữ liệu
-echo "<pre>";
-var_dump($cate->all());
+$ctl = $_GET['ctl'] ?? '';
 
 match ($ctl) {
-    //admin
-    
-    //client
-    '' => (new HomeController)->index(),
-    'checkout' => (new HomeController)->checkout(),
-    'blank' => (new HomeController)->blank(),
-    'product' => (new HomeController)->product(),
-    
-    default => "Không tìm thấy file"
+    '', 'home' => (new HomeController)->index(),
+    // 'category' => (new ProductController)->index(),
+    default => view('errors.404'),
 };
