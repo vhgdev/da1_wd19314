@@ -3,29 +3,35 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow p-4" style="max-width: 400px; width: 100%; border-radius: 10px;">
         <h3 class="text-center mb-4" style="color: #D10024;">Đăng ký</h3>
-        <form>
+        <form action="<?= ROOT_URL_ . '?ctl=register'?>">
             <!-- Name input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="form3Example1">Họ và tên</label>
-                <input type="text" id="form3Example1" class="form-control" />
+                <label class="form-label" for="fullname">Họ và tên</label>
+                <input type="text" id="fullname" class="form-control" />
             </div>
 
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="form3Example2">Email</label>
-                <input type="email" id="form3Example2" class="form-control" />
+                <label class="form-label" for="email">Email</label>
+                <input type="email" id="email" class="form-control" />
             </div>
 
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="form3Example3">Mật khẩu</label>
-                <input type="password" id="form3Example3" class="form-control" />
+                <label class="form-label" for="password">Mật khẩu</label>
+                <input type="password" id="password" class="form-control" />
             </div>
 
             <!-- Confirm Password input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="form3Example4">Xác nhận mật khẩu</label>
-                <input type="password" id="form3Example4" class="form-control" />
+                <label class="form-label" for="phone">Số điện thoại:</label>
+                <input type="number" id="phone" class="form-control" />
+            </div>
+
+            <!-- address -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="address">Địa chỉ:</label>
+                <input type="number" id="address" class="form-control" />
             </div>
 
             <!-- Submit button -->
