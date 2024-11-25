@@ -57,7 +57,7 @@
 						</li>
 
 						<li
-						><a href="<?= ROOT_URL_ . '?ctl=register'?>"><i class="fa fa-user-o"></i> Logout</a>
+						><a href="<?= ROOT_URL_ . '?ctl=register'?>"><i class="fa fa-user-o"></i> Register</a>
 					</li>
 
 						<?php endif	?>
