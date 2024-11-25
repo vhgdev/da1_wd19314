@@ -82,13 +82,13 @@
 						<!-- Box Sản Phẩm -->
 						<div class="col-md-3">
 							<div class="product-box">
-								<img src="<?= $laptop['image'] ?>" alt="Product Image" class="product-img">
+								<img src="<?= ROOT_URL_ . $laptop['image'] ?>" alt="Product Image" class="product-img">
 								<div class="product-info">
 									<a href="#">
 										<h5 class="product-name"><?= $laptop['name'] ?></h5>
 									</a>
 									<div>
-										<span class="product-price"><?= $laptop['price'] ?></span>
+										<span class="product-price"><?= number_format($laptop['price'])?></span>
 
 									</div>
 									<div class="product-buttons">

@@ -38,8 +38,10 @@ class AdminProductController
         }
         $data['image'] = $image;
 
-        $product = new Product;
-        $product->create($data);
+        // Lưu vào CSDL 
+        (new Product) -> create($data);
+
+        $_SESSION['message'] = "Thêm dữ liệu thành công";
         header("location: " . ADMIN_URL . "?ctl=listsp");
         die;
     }
