@@ -47,9 +47,9 @@
 						<li><a href="#"><i class="fa fa-map-marker"></i> Trịnh Văn Bô</a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						<?php if(isset($_SESSION['user'])) :?>
-						<li><a href="<?= ROOT_URL_?>><i class="fa fa-dollar"></i> VND</a></li>
-						<li><a href="<?= ROOT_URL_ ?>"><i class="fa fa-user-o"></i> Đăng nhập</a></li>
+						<?php if(isset($_SESSION['users'])) :?>
+						<li><a href="<?= ROOT_URL_?>"></a><i class="fa fa-dollar"></i>Đăng nhập</a></li>
+						<li><a href="<?= ROOT_URL_ ?>"><i class="fa fa-user-o"></i> Đăng ký</a></li>
 						<?php else : ?>
 
 						<li>
