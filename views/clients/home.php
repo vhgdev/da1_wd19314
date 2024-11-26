@@ -82,8 +82,11 @@
 						<!-- Box Sản Phẩm -->
 						<div class="col-md-3">
 							<div class="product-box">
-								<img src="<?= ROOT_URL_ . $laptop['image'] ?>" alt="Product Image" class="product-img">
-								<div class="product-info">
+								<div class="product-img">
+									<img src="<?= ROOT_URL_ . $laptop['image'] ?>" alt="Product Image" >
+								</div>
+								
+								<div class="product-body">
 									<a href="#">
 										<h5 class="product-name"><?= $laptop['name'] ?></h5>
 									</a>
@@ -184,8 +187,10 @@
 							<!-- Box Sản Phẩm -->
 							<div class="col-md-3">
 								<div class="product-box">
-									<img src="<?= $pro['image'] ?>" alt="Product Image" class="product-img">
-									<div class="product-info">
+									<div class="product-img">
+                        				<img src="<?= $pro['image'] ?>" alt="Product Image" >
+                    				</div>       
+									<div class="product-body">
 										<a href="#">
 											<h5 class="product-name"><?= $pro['name'] ?></h5>
 										</a>
