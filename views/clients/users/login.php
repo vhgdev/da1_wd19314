@@ -2,18 +2,44 @@
 
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow p-4" style="max-width: 400px; width: 100%; border-radius: 10px;">
+
+        <!-- Thông báo đăng nhập thành công -->
+        <?php if ($message != '') : ?>
+
+            <div class="alert alert-success">
+                <?= $message ?>
+            </div>
+
+        <?php endif ?>
+
+        <!-- Thông báo đăng nhập thất bại -->
+
+        <?php if ($error != '') : ?>
+
+            <div class="alert alert-danger">
+                <?= $error ?>
+            </div>
+
+        <?php endif ?>
+
+
+
+        <!-- Form đăng nhập -->
+
         <h3 class="text-center mb-4" style="color: #D10024;">Đăng nhập</h3>
-        <form>
+
+        <form action="<?= ROOT_URL_ . '?ctl=login' ?>" method="POST">
+
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
                 <label class="form-label" for="email">Email address</label>
-                <input type="email" id="email" class="form-control" />
+                <input type="email" name="email" class="form-control" />
             </div>
 
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-4">
                 <label class="form-label" for="password">Password</label>
-                <input type="password" id="password" class="form-control" />
+                <input type="password" name="password" class="form-control" />
             </div>
 
             <!-- 2 column grid layout for inline styling -->
@@ -33,7 +59,7 @@
             </div>
 
             <!-- Submit button -->
-            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4" style="background-color: #D10024;">
+            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4" style="background-color: #D10024;">
                 <span>Đăng nhập</span>
             </button>
 

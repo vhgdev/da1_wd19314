@@ -1,4 +1,7 @@
 <?php
+
+
+session_start();
 require_once __DIR__ . "/env.php";
 require_once __DIR__ . "/common/function.php";
 require_once __DIR__ . "/models/BaseModel.php";
@@ -19,4 +22,3 @@ match ($ctl) {
     'login' =>(new AuthController)->login(),
     default => view('errors.404'),
 };
-

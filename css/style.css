@@ -861,6 +861,13 @@ textarea.input {
   transition: 0.2s all;
 }
 
+.product-box { position: relative; margin: 15px 0px; box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED; transition: 0.2s all; } 
+.product-box:hover { box-shadow: 0px 0px 6px 0px #E4E7ED, 0px 0px 0px 2px #D10024; } 
+.product-box .product-img { position: relative; overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài */ } 
+.product-box .product-img > img { width: 100%; height: auto; /* Đảm bảo tỷ lệ khung hình */ display: block; transition: transform 0.2s ease; /* Thêm hiệu ứng khi di chuột */ } 
+.product-box:hover .product-img > img { transform: scale(1.1); /* Phóng to ảnh khi di chuột */ } 
+.product-box .product-body { position: relative; padding: 15px; background-color: #FFF; text-align: center; z-index: 20; }
+
 .product:hover {
   -webkit-box-shadow: 0px 0px 6px 0px #E4E7ED, 0px 0px 0px 2px #D10024;
   box-shadow: 0px 0px 6px 0px #E4E7ED, 0px 0px 0px 2px #D10024;
@@ -872,6 +879,7 @@ textarea.input {
 
 .product .product-img>img {
   width: 100%;
+  min-height: 300px;
 }
 
 .product .product-img .product-label {
