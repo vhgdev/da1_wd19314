@@ -8,7 +8,7 @@ require_once __DIR__ . "/models/BaseModel.php";
 require_once __DIR__ . "/models/Category.php";
 require_once __DIR__ . "/models/Product.php";
 require_once __DIR__ . "/models/User.php";
-
+//Controller
 require_once __DIR__ . "/controllers/HomeController.php";
 require_once __DIR__ . "/controllers/ProductController.php";
 require_once __DIR__ . "/controllers/AuthController.php";
