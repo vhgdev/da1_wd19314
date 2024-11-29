@@ -75,8 +75,8 @@
 						<!-- LOGO -->
 						<div class="col-md-3">
 							<div class="header-logo">
-								<a href="#" class="logo">
-									<img src="./img/logo-removebg-preview (1).png" alt="" width="290px" height="65px">
+								<a href="<?= ROOT_URL_ ?>" class="logo">
+									<img src="images/logo-removebg-preview (1).png" alt="" width="290px" height="65px">
 								</a>
 							</div>
 						</div>
@@ -122,7 +122,7 @@
 										<div class="cart-list">
 											<div class="product-widget">
 												<div class="product-img">
-													<img src="./img/product01.png" alt="">
+													<img src="images/product01.png" alt="">
 												</div>
 												<div class="product-body">
 													<h3 class="product-name"><a href="#">Tên sản phẩm</a></h3>
@@ -133,7 +133,7 @@
 
 											<div class="product-widget">
 												<div class="product-img">
-													<img src="./img/product02.png" alt="">
+													<img src="images/product02.png" alt="">
 												</div>
 												<div class="product-body">
 													<h3 class="product-name"><a href="#">Tên sản phẩm</a></h3>

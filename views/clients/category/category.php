@@ -11,7 +11,7 @@
                         <img src="<?= $pro['image'] ?>" alt="Product Image" >
                     </div>         
                     <div class="product-body">
-                        <a href="#">
+                        <a href="<?= ROOT_URL_ . '?ctl=detail&id=' . $pro['id'] ?>">
                             <h5 class="product-name"><?= $pro['name'] ?></h5>
                         </a>
                         <div>

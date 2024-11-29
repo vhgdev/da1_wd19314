@@ -23,11 +23,55 @@ class AuthController{
         return view('clients.users.register'); 
     }
     //Đăng nhập
-    public function login(){
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $data= $_POST;
-            dd($data);
+    public function login()
+    {   
+        $error =  null;
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $user = (new User)->findUserOfEmail($email);
+
+
+            // Kiểm tra mật khẩu
+            if ($user) {
+               if (password_verify($password, $user['password'])) {
+                // Đăng nhập thành công
+                $_SESSION['user'] = $user;
+                
+                // Nếu role = 1, vào admin, và ngược lại vào trang chủ
+                if ($user['role'] == 'admin'){
+                    header("location: " . ADMIN_URL);
+                } header("location: " . ROOT_URL_);
+
+               } else {
+                $error = "Email hoặc mật khẩu không đúng";
+               }
+            } else {
+                $error = "Email hoặc mật khẩu không đúng";
+            }
         }
-        
+
+
+        $message = session_flash('message');
+        return view('clients.users.login', compact('message', 'error'));      
+    }
+
+    public function logout() {
+
+    }
+
+    public function index() {
+        $users = (new User)->all();
+        return view('admin.users.list', compact('users'));
+    }
+
+    public function updateActive() {
+        $data = $_POST;
+
+        $data['active'] = $data['active'] ? 0 : 1;
+
+        (new User)->updateActive($data['id'], $data['active']);
+        return header('location: ' . ADMIN_URL . '?ctl=listuser');
     }
 }

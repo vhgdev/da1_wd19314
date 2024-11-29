@@ -1,4 +1,4 @@
-<?php include_once "views/clients/header.php" ?>
+<?php include_once ROOT_DIR . "views/clients/header.php" ?>
 <!-- SECTION -->
 <div class="section">
 	<!-- container -->
@@ -9,7 +9,7 @@
 			<div class="col-md-4 col-xs-6">
 				<div class="shop">
 					<div class="shop-img">
-						<img src="./img/shop01.png" alt="">
+						<img src="images/product01.png" alt="">
 					</div>
 					<div class="shop-body">
 						<h3>Laptop<br>Collection</h3>
@@ -23,7 +23,7 @@
 			<div class="col-md-4 col-xs-6">
 				<div class="shop">
 					<div class="shop-img">
-						<img src="./img/shop03.png" alt="">
+						<img src="images/product03.png" alt="" >
 					</div>
 					<div class="shop-body">
 						<h3>Accessories<br>Collection</h3>
@@ -37,7 +37,7 @@
 			<div class="col-md-4 col-xs-6">
 				<div class="shop">
 					<div class="shop-img">
-						<img src="./img/shop02.png" alt="">
+						<img src="images/product02.png" alt="">
 					</div>
 					<div class="shop-body">
 						<h3>Cameras<br>Collection</h3>
@@ -87,7 +87,7 @@
 								</div>
 								
 								<div class="product-body">
-									<a href="#">
+									<a href="<?= ROOT_URL_ . '?ctl=detail&id=' . $laptop['id'] ?>">
 										<h5 class="product-name"><?= $laptop['name'] ?></h5>
 									</a>
 									<div>
@@ -191,7 +191,7 @@
                         				<img src="<?= $pro['image'] ?>" alt="Product Image" >
                     				</div>       
 									<div class="product-body">
-										<a href="#">
+										<a href="<?= ROOT_URL_ . '?ctl=detail&id=' . $pro['id'] ?>">
 											<h5 class="product-name"><?= $pro['name'] ?></h5>
 										</a>
 										<div>
@@ -250,4 +250,4 @@
 		<!-- /container -->
 	</div>
 	<!-- /NEWSLETTER -->
-	<?php include_once "views/clients/footer.php" ?>
+	<?php include_once ROOT_DIR . "views/clients/footer.php" ?>
