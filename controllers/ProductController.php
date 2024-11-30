@@ -14,6 +14,9 @@ class ProductController
 
         $categories = (new Category)->all();
 
+        // Lưu thông tin URI VÀO SESSION
+        $_SESSION['URI'] = $_SERVER['REQUEST_URI'];
+
         return view(
             'clients.category.category',
             compact('products', 'categories', 'title')

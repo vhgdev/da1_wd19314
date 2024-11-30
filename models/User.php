@@ -9,7 +9,7 @@ class User extends BaseModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     //Lấy ra 1 user
-    public function find($id){
+    public function find($id){  
         $sql="SELECT *FROM users WHERE id =:id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['id'=>$id]);
