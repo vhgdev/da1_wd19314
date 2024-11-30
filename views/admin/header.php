@@ -28,6 +28,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?= ADMIN_URL . '?ctl=listsp' ?>">Sản phẩm</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= ADMIN_URL . '?ctl=listuser' ?>">Tài khoản</a>
+                        </li>
 
                     </ul>
                     <form class="d-flex" role="search">

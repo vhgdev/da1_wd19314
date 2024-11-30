@@ -34,7 +34,7 @@
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 
-    </head>n
+    </head>
 	<body>
 		<!-- HEADER -->
 		<header>
@@ -47,8 +47,9 @@
 						<li><a href="#"><i class="fa fa-map-marker"></i> Trịnh Văn Bô</a></li>
 					</ul>
 					<ul class="header-links pull-right">
+						<?= $_SESSION['user']['fullname'] ?? ''  ?>
 						<?php if(isset($_SESSION['users'])) :?>
-						<li><a href="<?= ROOT_URL_?>"></a><i class="fa fa-dollar"></i>Đăng nhập</a></li>
+						<li><a href="<?= ROOT_URL_?>"></a><i class="fa fa-dollar"><?= $_SESSION['user']['fullname'] ?? ''  ?></i>Đăng nhập</a></li>
 						<li><a href="<?= ROOT_URL_ ?>"><i class="fa fa-user-o"></i> Đăng ký</a></li>
 						<?php else : ?>
 
