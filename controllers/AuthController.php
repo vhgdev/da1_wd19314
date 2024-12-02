@@ -55,6 +55,7 @@ class AuthController{
 
         $message = session_flash('message');
         return view('clients.users.login', compact('message', 'error'));      
+
     }
 
     public function logout() {
@@ -75,4 +76,3 @@ class AuthController{
         return header('location: ' . ADMIN_URL . '?ctl=listuser');
     }
 }
-

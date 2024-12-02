@@ -1,4 +1,4 @@
-<?php include_once "views/clients/header.php" ?>
+<?php include_once ROOT_DIR . "views/clients/header.php" ?>
 		<!-- /BREADCRUMB -->
 
 		<!-- SECTION -->
@@ -538,5 +538,5 @@
 		</div>
 		<!-- /NEWSLETTER -->
 
-		<?php include_once "views/clients/footer.php" ?>
+		<?php include_once ROOT_DIR . "views/clients/footer.php" ?>
 
