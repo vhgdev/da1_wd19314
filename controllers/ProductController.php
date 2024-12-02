@@ -39,6 +39,8 @@ class ProductController
         //Lưu thông tin uri
         $_SESSION['URI'] = $_SERVER['REQUEST_URI'];
 
+        $_SESSION['totalQuantity'] = (new CartController)->totalQuantityInCart();
+
         return view(
             'clients.product.detail',
             compact('product','categories','title','productReleads')

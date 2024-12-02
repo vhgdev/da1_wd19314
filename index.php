@@ -1,6 +1,4 @@
 <?php
-
-
 session_start();
 require_once __DIR__ . "/env.php";
 require_once __DIR__ . "/common/function.php";
@@ -28,5 +26,9 @@ match ($ctl) {
     'register' =>(new AuthController)->register(),
     'login' =>(new AuthController)->login(),
     'detail' => (new ProductController)->show(),
+    'add-cart' => (new CartController)->addToCart(),
+    'view-cart' => (new CartController)->viewCart(),
+    'delete-cart' => (new CartController)->deleteProductInCart(),
+    'update-cart' => (new CartController)->updateCart(),
     default => view('errors.404'),
 };

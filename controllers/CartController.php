@@ -1,4 +1,4 @@
-<?php
+ww<?php
 
 class CartController
 {
@@ -21,7 +21,7 @@ class CartController
                 'name'      => $product['name'],
                 'image'     => $product['image'],
                 'price'     => $product['price'],
-                'quantity'  => 1,
+                'quantitity'  => 1,
             ];
         }
         //Gán lại giỏ hàng cho session
@@ -35,6 +35,7 @@ class CartController
 
         return header("Location: " . $uri);
     }
+
 
     //Tính tổng số lượng sản phẩm ở trong giỏ hàng
     public function totalQuantityInCart()
@@ -79,5 +80,15 @@ class CartController
         //Tính tổng số lượng
         $_SESSION['totalQuantity'] = $this->totalQuantityInCart();
         return header("location: " . ROOT_URL_ . "?ctl=view-cart");
+    }
+
+    public function updateCart()
+    {
+        $quantities = $_POST['quantity'];
+        //Cập nhật số lượng
+        foreach ($quantities as $id => $qty) {
+            $_SESSION['cart'][$id]['quantity'] = $qty;
+        }
+        return header("Location: " . ROOT_URL_ . "?ctl=view-cart");
     }
 }
