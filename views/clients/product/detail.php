@@ -67,9 +67,9 @@
 							<a class="review-link" href="#">10 Review(s) | Add your review</a>
 						</div>
 						<div>
-							<h3 class="product-price"><?= number_format($product['price']) ?> <del class="product-old-price">$990.00</del></h3>
+							<h3 class="product-price"><?= number_format($product['price']) ?> VNĐ</h3>
 							<?php if ($product['quantity'] > 0) : ?>
-								<span class="product-available">In Stock</span>
+								<span class="product-available">Còn hàng</span>
 							<?php else : ?>
 								<span class="product-available">Out of Stock</span>
 							<?php endif  ?>
