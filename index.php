@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
-=======
 
-
->>>>>>> e22aecff20a30e5e5ec68d88729868b6ab692d4f
 session_start();
 require_once __DIR__ . "/env.php";
 require_once __DIR__ . "/common/function.php";

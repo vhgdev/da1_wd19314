@@ -55,27 +55,7 @@ class AuthController{
 
         $message = session_flash('message');
         return view('clients.users.login', compact('message', 'error'));      
-<<<<<<< HEAD
-    }
 
-    public function logout() {
-
-    }
-
-    public function index() {
-        $users = (new User)->all();
-        return view('admin.users.list', compact('users'));
-    }
-
-    public function updateActive() {
-        $data = $_POST;
-
-        $data['active'] = $data['active'] ? 0 : 1;
-
-        (new User)->updateActive($data['id'], $data['active']);
-        return header('location: ' . ADMIN_URL . '?ctl=listuser');
-=======
->>>>>>> e22aecff20a30e5e5ec68d88729868b6ab692d4f
     }
 
     public function logout() {
@@ -96,4 +76,3 @@ class AuthController{
         return header('location: ' . ADMIN_URL . '?ctl=listuser');
     }
 }
-
