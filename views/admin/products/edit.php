@@ -1,3 +1,13 @@
+<?php
+// Xử lý form cập nhật
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Cập nhật sản phẩm vào cơ sở dữ liệu (giả sử bạn đã thực hiện)
+    // Sau khi cập nhật thành công, chuyển hướng về trang quản lý sản phẩm
+    header("Location: " . ADMIN_URL . "?ctl=listsp");
+    exit();
+}
+?>
+
 <?php include_once ROOT_DIR . "views/admin/header.php" ?>
 
 <div>
@@ -39,7 +49,7 @@
             <label for="">Mô tả</label>
             <textarea name="description" rows="6" id="" class="form-control"><?= $product['description'] ?></textarea>
         </div>
-        <!--Lưu trữ id vàfo thẻ hidden-->
+        <!--Lưu trữ id vào thẻ hidden-->
         <input type="hidden" name="id" value="<?= $product['id'] ?>">
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Cập nhật</button>
