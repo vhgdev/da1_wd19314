@@ -14,13 +14,16 @@ class ProductController
 
         $categories = (new Category)->all();
 
+        // Lưu thông tin URI VÀO SESSION
+        $_SESSION['URI'] = $_SERVER['REQUEST_URI'];
+
         return view(
             'clients.category.category',
             compact('products', 'categories', 'title')
         );
     }
     
-    //Chi tiết sản phẩm
+    //Chi tiết sản phẩm 
     public function show() {
         $id = $_GET['id']; //d sản phẩm
 
@@ -35,6 +38,8 @@ class ProductController
         
         //Lưu thông tin uri
         $_SESSION['URI'] = $_SERVER['REQUEST_URI'];
+
+        $_SESSION['totalQuantity'] = (new CartController)->totalQuantityInCart();
 
         return view(
             'clients.product.detail',

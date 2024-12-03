@@ -96,7 +96,7 @@
 									</div>
 									<div class="product-buttons">
 
-										<button class="btn btn-outline-success">Thêm vào giỏ hàng</button>
+										<a href="" class="btn btn-outline-success">Thêm vào giỏ hàng</a>
 									</div>
 								</div>
 							</div>
@@ -198,7 +198,7 @@
 											<span class="product-price"><?= $pro['price'] ?></span>
 										</div>
 										<div class="product-buttons">
-											<button class="btn btn-outline-success">Thêm vào giỏ hàng</button>
+											<a href="<?= ROOT_URL_ . '?ctl=add-cart&id=' . $pro['id']?>" class="btn btn-outline-success">Thêm vào giỏ hàng</a>
 										</div>
 									</div>
 								</div>
