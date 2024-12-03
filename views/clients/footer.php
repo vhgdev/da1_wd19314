@@ -100,5 +100,22 @@
 		<script src="js/jquery.zoom.min.js"></script>
 		<script src="js/main.js"></script>
 
+		<script>
+	btnSearch = document.getElementById('btnSearch')
+	keyword = document.getElementById('keyword');
+
+	btnSearch.addEventListener('click', function(){
+		location.href="<?= ROOT_URL_ . 'ctl=search&keyword=' ?>" + keyword.value;
+	})
+
+	keyword.addEventListener('keypress', function(event){
+		if(event.key =='Enter'){
+			location.href="<?= ROOT_URL_ . 'ctl=search&keyword=' ?>" + keyword.value;
+			event.preventDefault();
+		}
+	})
+ </script>
+
 	</body>
 </html>
+ 

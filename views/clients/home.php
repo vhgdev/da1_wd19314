@@ -96,7 +96,7 @@
 									</div>
 									<div class="product-buttons">
 
-										<a href="" class="btn btn-outline-success">Thêm vào giỏ hàng</a>
+										<a href="<?= ROOT_URL_ . '?ctl=detail&id=' . $laptop['id'] ?>" class="btn btn-outline-success">Chỉ tiết sản phẩm</a>
 									</div>
 								</div>
 							</div>
@@ -195,10 +195,10 @@
 											<h5 class="product-name"><?= $pro['name'] ?></h5>
 										</a>
 										<div>
-											<span class="product-price"><?= $pro['price'] ?></span>
+											<span class="product-price"><?= number_format($pro['price'])  ?></span>
 										</div>
 										<div class="product-buttons">
-											<a href="<?= ROOT_URL_ . '?ctl=add-cart&id=' . $pro['id']?>" class="btn btn-outline-success">Thêm vào giỏ hàng</a>
+											<a href="<?= ROOT_URL_ . '?ctl=detail&id=' . $pro['id'] ?>" class="btn btn-outline-success">Chi tiết sản phẩm</a>
 										</div>
 									</div>
 								</div>
