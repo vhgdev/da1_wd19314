@@ -48,7 +48,7 @@
 					<li><a href="index.php?ctl=checkout"><i class="fa fa-envelope-o"></i> fptedu@email.com</a></li>
 					<li><a href="#"><i class="fa fa-map-marker"></i> Trịnh Văn Bô</a></li>
 				</ul>
-				<ul class="header-links pull-right">
+				<ul class="header-links pull-right" style="color: white">
 					<?= $_SESSION['user']['fullname'] ?? ''  ?>
 					<?php if (isset($_SESSION['users'])) : ?>
 						<li><a href="<?= ROOT_URL_ ?>"></a><i class="fa fa-dollar"><?= $_SESSION['user']['fullname'] ?? ''  ?></i>Đăng nhập</a></li>

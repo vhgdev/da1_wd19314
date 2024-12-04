@@ -1,8 +1,8 @@
 <?php include_once ROOT_DIR . "./views/clients/header.php" ?>
-<div class="container mt-5">
+<div class="container mt-5"><br><br>
     <h1 class="mb-4">Giỏ hàng của bạn</h1>
     <form action="<?= ROOT_URL_ . '?ctl=update-cart' ?>" method="POST">
-        <div class="table-responsive">
+        <div class="table-responsive"><br>
             <table class="table table-bordered table-striped align-middle">
                 <thead class="table-primary">
                     <tr>

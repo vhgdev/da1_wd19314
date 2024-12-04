@@ -20,7 +20,7 @@ match ($ctl) {
     // 'detail' => (new ProductController)->show(),
     'register' => (new AuthController)->register(),
     'login' =>( new AuthController)->login(),
-    // 'logout' => (new AuthController)->logout(), 
+    'logout' => (new AuthController)->logout(), 
     // 'add-cart' => (new CartController)->addToCart(),
 
     'register' =>(new AuthController)->register(),
