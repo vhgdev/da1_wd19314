@@ -81,6 +81,7 @@ class CartController
         return header("location: " . ROOT_URL_ . "?ctl=view-cart");
     }
 
+    // Cập nhật giỏ hàng
     public function updateCart()
     {
         $quantities = $_POST['quantity'];

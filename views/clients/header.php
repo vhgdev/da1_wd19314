@@ -87,14 +87,14 @@
 					<!-- SEARCH BAR -->
 					<div class="col-md-6">
 						<div class="header-search">
-							<form>
+							<form >
 								<select class="input-select">
 									<option value="0" href="">Danh mục</option>
 									<option value="1" href="index.php?ctl=store">Laptop</option>
 									<option value="1" href="index.php?ctl=store">Phụ kiện</option>
 								</select>
-								<input class="input" placeholder="Search here">
-								<button class="search-btn">Tìm kiếm</button>
+								<input class="input" type="search" aria-label="Search" placeholder="Search here" id="keyword">
+								<button class="search-btn" type="button" id="btnSearch">Tìm kiếm</button>
 							</form>
 						</div>
 					</div>

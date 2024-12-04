@@ -11,6 +11,7 @@ require_once __DIR__ . "/controllers/HomeController.php";
 require_once __DIR__ . "/controllers/ProductController.php";
 require_once __DIR__ . "/controllers/AuthController.php";
 require_once __DIR__ . "/controllers/CartController.php";
+require_once __DIR__ . "/controllers/SearchController.php";
 
 $ctl = $_GET['ctl'] ?? '';
 
@@ -23,12 +24,13 @@ match ($ctl) {
     'logout' => (new AuthController)->logout(), 
     // 'add-cart' => (new CartController)->addToCart(),
 
-    'register' =>(new AuthController)->register(),
-    'login' =>(new AuthController)->login(),
+    // 'register' =>(new AuthController)->register(),
+    // 'login' =>(new AuthController)->login(),
     'detail' => (new ProductController)->show(),
     'add-cart' => (new CartController)->addToCart(),
     'view-cart' => (new CartController)->viewCart(),
     'delete-cart' => (new CartController)->deleteProductInCart(),
     'update-cart' => (new CartController)->updateCart(),
-    default => view('errors.404'),
+    'search'      => (new SearchController)->search(),
+    default => view( 'errors.404'),
 };
