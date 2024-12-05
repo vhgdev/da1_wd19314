@@ -37,5 +37,6 @@ match ($ctl) {
     'search' => (new SearchController)->search(),
     'view-checkout' => ( new CartController)->viewCheckOut(),
     'checkout' => ( new CartController)->checkOut(),
+    'success' => (new CartController)->success(),
     default => view( 'errors.404'),
 };

@@ -20,9 +20,8 @@
 	<div class="container">
 		<form action="<?= ROOT_URL_ . '?ctl=checkout' ?>" method="POST">
 			<div class="row">
-
-							<!-- Order Details -->
-							<div class="col-md-12 order-details">
+				<!-- Order Details -->
+				<div class="col-md-12 order-details">
 					<div class="section-title text-center">
 						<h3 class="title">Đơn hàng của bạn</h3>
 					</div>
@@ -47,9 +46,7 @@
 										</td>
 										<td><?= $cart['name'] ?></td>
 										<td><?= number_format($cart['price']) ?> VNĐ</td>
-										<td>
-											<input type="number" name="quantity[<?= $id ?>]" class="form-control" value="<?= $cart['quantity'] ?>" min="1" style="width: 80px;" disabled>
-										</td>
+										<td><?= $cart['quantity'] ?></td>
 										<td><?= number_format($cart['price'] * $cart['quantity']) ?> VNĐ</td>
 									</tr>
 								<?php endforeach; ?>
@@ -57,22 +54,26 @@
 						</table>
 					</div>
 					<div class="order-col">
-						<div><h4><strong>Tổng tiền</strong></h4></div><br>
-						<div><h2 style="color: #D9534F"><?= number_format($sumPrice) ?> VNĐ</h2><strong class="order-total"></strong></div>
+						<div>
+							<h4><strong>Tổng tiền</strong></h4>
+						</div><br>
+						<div>
+							<h2 style="color: #D9534F"><?= number_format($sumPrice) ?> VNĐ</h2><strong class="order-total"></strong>
+						</div>
 					</div>
 					<div class="payment-method">
 						<div class="input-radio">
-							<input type="radio" name="payment-method" id="payment-bank" value="bank" required>
-							<label for="payment-bank">
+							<input type="radio" name="payment_method" id="bank" value="bank" required>
+							<label for="bank">
 								<span></span>
 								Chuyển khoản ngân hàng
 							</label>
 						</div>
 						<div class="input-radio">
-							<input type="radio" name="payment-method" id="payment-zalopay" value="zalopay" required>
-							<label for="payment-zalopay">
+							<input type="radio" name="payment_method" id="cod" value="cod" required>
+							<label for="cod">
 								<span></span>
-								Chuyển khoản ZALOPAY
+								Thanh toán khi nhận hàng (COD)
 							</label>
 						</div>
 					</div>
@@ -80,30 +81,33 @@
 				</div>
 				<!-- /Order Details -->
 
-
 				<!-- Billing Details -->
 				<div class="col-md-12">
 					<div class="billing-details">
 						<div class="section-title">
-							<br><h3 class="title">Billing Address</h3>
+							<br>
+							<h3 class="title">Billing Address</h3>
+						</div>
+						<input type="hidden" name="user_id" value="<?= htmlspecialchars($user['id'] ?? '') ?>">
+						<div class="form-group">
+							<label for="fullName" class="form-label">Họ và tên</label>
+							<input class="input" type="text" name="fullname" placeholder="Họ và tên" value="<?= htmlspecialchars($user['fullname'] ?? '') ?>" required>
 						</div>
 						<div class="form-group">
-							<input class="input" type="text" name="first-name" placeholder="Họ và tên" required>
+							<label for="email" class="form-label">Email</label>
+							<input class="input" type="email" name="email" placeholder="Email" value="<?= htmlspecialchars($user['email'] ?? '') ?>" required>
 						</div>
 						<div class="form-group">
-							<input class="input" type="email" name="email" placeholder="Email" required>
+							<label for="address" class="form-label">Địa chỉ</label>
+							<input class="input" type="text" name="address" placeholder="Địa chỉ" value="<?= htmlspecialchars($user['address'] ?? '') ?>" required>
 						</div>
 						<div class="form-group">
-							<input class="input" type="text" name="address" placeholder="Địa chỉ" required>
-						</div>
-						<div class="form-group">
-							<input class="input" type="tel" name="tel" placeholder="Số điện thoại" required>
+							<label for="phone" class="form-label">Số điện thoại</label>
+							<input class="input" type="tel" name="phone" placeholder="Số điện thoại" value="<?= htmlspecialchars($user['phone'] ?? '') ?>" required>
 						</div>
 					</div>
 				</div>
 				<!-- /Billing Details -->
-
-
 			</div>
 		</form>
 	</div>
