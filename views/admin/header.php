@@ -32,6 +32,11 @@
                             <a class="nav-link" href="<?= ADMIN_URL . '?ctl=listuser' ?>">Tài khoản</a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= ADMIN_URL . '?ctl=list-order' ?>">Đơn hàng</a>
+                        </li>
+
+
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search"

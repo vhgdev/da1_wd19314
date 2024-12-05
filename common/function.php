@@ -28,3 +28,14 @@ function session_flash($key)
     unset($_SESSION[$key]);
     return $message;
 }
+
+//chuyển đổi trạng thái đơn hàng
+function translate_status($status){
+    $status_details = [
+        1 => 'chờ xử lý',
+        2 => 'đang xử lý',
+        3 => 'Hoàn thành',
+        4 => 'Đã hủy'
+    ];
+    return $status_details[$status];
+}

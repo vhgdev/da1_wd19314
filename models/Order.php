@@ -2,6 +2,7 @@
 
 
 class Order extends BaseModel {
+    
     // Tất cả hóa đơn
     public function all() {
         $sql = "SELECT o.*, fullname, email, address, phone FORM orders o JOIN users u ON o.user_id=u.id ORDER BY o.id DESC";
