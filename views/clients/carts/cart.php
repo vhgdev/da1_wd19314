@@ -16,12 +16,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Dòng sản phẩm 1 -->
+                    <!-- Dòng sản phẩm -->
                     <?php foreach ($carts as $id => $cart) : ?>
                         <tr>
-                            <td>
-                                <img src="<?= $cart['image'] ?>" alt="<?= $cart['name'] ?>" class="img-thumbnail"
-                                    style="width: 80px; height: auto;">
+                            <td scope="col"><?= $id ?></td>
+                            <td class="text-center align-middle">
+                                <div style="display: flex; justify-content: center; align-items: center;">
+                                    <img src="<?= $cart['image'] ?>" alt="<?= $cart['name'] ?>" class="img-thumbnail"
+                                        style="width: 150px; height: auto;">
+                                </div>
                             </td>
                             <td><?= $cart['name'] ?></td>
                             <td><?= number_format($cart['price']) ?></td>
@@ -29,22 +32,14 @@
                                 <input type="number" name="quantity[<?= $id ?>]" class="form-control" value="<?= $cart['quantity'] ?>" min="1"
                                     style="width: 80px;">
                             </td>
+                            <td><?= number_format($cart['price'] * $cart['quantity']) ?> VNĐ</td>
                             <td>
-                                <?php
-                                // Đảm bảo giá trị 'price' và 'quantity' là kiểu số
-                                $price = (float) $cart['price'];
-                                $quantity = (int) $cart['quantity'];
-
-                                // Tính thành tiền và hiển thị
-                                echo number_format($price * $quantity) . " VNĐ";  ?>
-                            <td>
-                                <a href="<?= ROOT_URL_ . '?ctl=delete-cart&id=' . $id ?>"
-                                    class="btn btn-danger btn-sm">
+                                <a href="<?= ROOT_URL_ . '?ctl=delete-cart&id=' . $id ?>" class="btn btn-danger btn-sm">
                                     <i class="bi bi-trash"></i> Xóa
                                 </a>
                             </td>
                         </tr>
-                    <?php endforeach  ?>
+                    <?php endforeach; ?>
                 </tbody>
                 <!-- Tổng tiền -->
                 <tfoot class="table-light">
@@ -53,26 +48,23 @@
                         <td colspan="2" class="fw-bold text-danger"><?= number_format($totalPrice) ?> VNĐ</td>
                     </tr>
                 </tfoot>
-
             </table>
         </div>
         <!-- Nút hành động -->
         <div class="d-flex justify-content-between mt-4">
-            <a href="shop.html" class="btn btn-secondary">
-                <i class="bi bi-arrow-left"></i> Tiếp tục mua sắm
+            <a href="<?= ROOT_URL_ ?>" class="btn btn-danger btn-sm">
+                <i class="bi bi-arrow-clockwise"></i> Tiếp tục mua sắm
             </a>
             <div>
-                <button type="submit" class="btn btn-warning">
+                <br><button type="submit" class="btn btn-warning">
                     <i class="bi bi-arrow-clockwise"></i> Cập nhật giỏ hàng
                 </button>
                 <a href="<?= ROOT_URL_ . '?ctl=view-checkout' ?>" type="button" class="btn btn-success">
                     <i class="bi bi-credit-card"></i> Thanh toán
                 </a>
-            </div>
+            </div><br>
         </div>
     </form>
 </div>
-
-
 
 <?php include_once ROOT_DIR . "./views/clients/footer.php" ?>

@@ -36,7 +36,6 @@
 									<th scope="col">Giá</th>
 									<th scope="col">Số lượng</th>
 									<th scope="col">Thành tiền</th>
-									<th scope="col">Hành động</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -49,14 +48,9 @@
 										<td><?= $cart['name'] ?></td>
 										<td><?= number_format($cart['price']) ?> VNĐ</td>
 										<td>
-											<input type="number" name="quantity[<?= $id ?>]" class="form-control" value="<?= $cart['quantity'] ?>" min="1" style="width: 80px;">
+											<input type="number" name="quantity[<?= $id ?>]" class="form-control" value="<?= $cart['quantity'] ?>" min="1" style="width: 80px;" disabled>
 										</td>
 										<td><?= number_format($cart['price'] * $cart['quantity']) ?> VNĐ</td>
-										<td>
-											<a href="<?= ROOT_URL_ . '?ctl=delete-cart&id=' . $id ?>" class="btn btn-danger btn-sm">
-												<i class="bi bi-trash"></i> Xóa
-											</a>
-										</td>
 									</tr>
 								<?php endforeach; ?>
 							</tbody>
