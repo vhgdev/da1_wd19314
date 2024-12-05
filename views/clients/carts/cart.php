@@ -19,7 +19,6 @@
                     <!-- Dòng sản phẩm 1 -->
                     <?php foreach ($carts as $id => $cart) : ?>
                         <tr>
-                            <th scope="row"><?= $id ?></th>
                             <td>
                                 <img src="<?= $cart['image'] ?>" alt="<?= $cart['name'] ?>" class="img-thumbnail"
                                     style="width: 80px; height: auto;">
@@ -66,13 +65,14 @@
                 <button type="submit" class="btn btn-warning">
                     <i class="bi bi-arrow-clockwise"></i> Cập nhật giỏ hàng
                 </button>
-                <button type="button" class="btn btn-success">
+                <a href="<?= ROOT_URL_ . '?ctl=view-checkout' ?>" type="button" class="btn btn-success">
                     <i class="bi bi-credit-card"></i> Thanh toán
-                </button>
+                </a>
             </div>
         </div>
     </form>
 </div>
+
 
 
 <?php include_once ROOT_DIR . "./views/clients/footer.php" ?>

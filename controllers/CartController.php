@@ -91,4 +91,56 @@ class CartController
         }
         return header("Location: " . ROOT_URL_ . "?ctl=view-cart");
     }
+
+    public function viewCheckOut()
+    {
+        if (!isset($_SESSION['user'])) {
+            return header("location: " . ROOT_URL_ . '?ctl=login');
+        }
+
+        $user = $_SESSION['user'];
+        $carts = $_SESSION['cart'] ?? [];
+        $sumPrice = $this->totalPriceInCart();
+        return view("clients.carts.checkout", compact('user', 'carts', 'sumPrice'));
+    }
+
+    public function checkOut()
+    {
+        // Lấy thông tin người dùng
+        $user = [
+            'id' => $_POST['id'],
+            'fullname' => $_POST['fullname'],
+            'phone' => $_POST['phone'],
+            'address' => $_POST['address'],
+            'role' => $_SESSION['user']['role'],
+            'active' => $_SESSION['user']['active'],
+
+        ];
+
+        $sumPrice = $this->totalPriceInCart();
+
+        $order = [
+            'user_id' => $_POST['user_id'],
+            'status' => 1,
+            'payment_method' => $_POST['payment_method'],
+            'total_price' => $sumPrice,
+
+        ];
+
+        (new User)->update($user['id'], $user);
+        $order_id = (new Order)->create($order);
+
+        $order_detail = new Order;
+        $carts = $_SESSION['cart'];
+        foreach ( $carts as $id => $cart) {
+            $or_detail = [
+                'order_id' => $order_id,
+                'product_id' => $id,
+                'price' => $cart['price'],
+                'quantity' => $cart['quantity']
+            ];
+            ( new Order)->createOrderDetail($or_detail);
+        }
+
+    }
 }

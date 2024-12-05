@@ -18,7 +18,7 @@ class Product extends BaseModel
     }
     //Tìm kiếm
     public function searchProductName($name){
-        $sql = "SELECT p.*, cate_name FROM products p JOIN categories c ON p.category_id=c.id WHERE name LIKE '%name%'";
+        $sql = "SELECT p.*, cate_name FROM products p JOIN categories c ON p.category_id=c.id WHERE name LIKE '%$name%'";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC); 

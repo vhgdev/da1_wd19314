@@ -105,12 +105,12 @@
 	keyword = document.getElementById('keyword');
 
 	btnSearch.addEventListener('click', function(){
-		location.href="<?= ROOT_URL_ . 'ctl=search&keyword=' ?>" + keyword.value;
+		location.href="<?= ROOT_URL_ . '?ctl=search&keyword=' ?>" + keyword.value;
 	})
 
 	keyword.addEventListener('keypress', function(event){
 		if(event.key =='Enter'){
-			location.href="<?= ROOT_URL_ . 'ctl=search&keyword=' ?>" + keyword.value;
+			location.href="<?= ROOT_URL_ . '?ctl=search&keyword=' ?>" + keyword.value;
 			event.preventDefault();
 		}
 	})
