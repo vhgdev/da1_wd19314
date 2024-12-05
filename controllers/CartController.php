@@ -106,41 +106,69 @@ class CartController
 
     public function checkOut()
     {
-        // Lấy thông tin người dùng
+        // Validate required fields
+        $user_id = $_POST['user_id'] ?? null;
+        $fullname = $_POST['fullname'] ?? null;
+        $phone = $_POST['phone'] ?? null;
+        $address = $_POST['address'] ?? null;
+        $payment_method = $_POST['payment_method'] ?? null;
+    
+        if (!$user_id || !$fullname || !$phone || !$address || !$payment_method) {
+            die("Missing required checkout information. Please try again.");
+        }
+    
+        // Update user information
         $user = [
-            'id' => $_POST['id'],
-            'fullname' => $_POST['fullname'],
-            'phone' => $_POST['phone'],
-            'address' => $_POST['address'],
+            'id' => $user_id,
+            'fullname' => $fullname,
+            'phone' => $phone,
+            'address' => $address,
             'role' => $_SESSION['user']['role'],
             'active' => $_SESSION['user']['active'],
-
         ];
-
+        (new User)->update($user_id, $user);
+    
+        // Create order
         $sumPrice = $this->totalPriceInCart();
-
         $order = [
-            'user_id' => $_POST['user_id'],
+            'user_id' => $user_id,
             'status' => 1,
-            'payment_method' => $_POST['payment_method'],
+            'payment_method' => $payment_method,
             'total_price' => $sumPrice,
-
         ];
-
-        (new User)->update($user['id'], $user);
         $order_id = (new Order)->create($order);
-
-        $order_detail = new Order;
-        $carts = $_SESSION['cart'];
-        foreach ( $carts as $id => $cart) {
-            $or_detail = [
+    
+        // Create order details
+        $carts = $_SESSION['cart'] ?? [];
+        foreach ($carts as $id => $cart) {
+            $order_detail = [
                 'order_id' => $order_id,
                 'product_id' => $id,
                 'price' => $cart['price'],
-                'quantity' => $cart['quantity']
+                'quantity' => $cart['quantity'],
             ];
-            ( new Order)->createOrderDetail($or_detail);
+            (new Order)->createOrderDetail($order_detail);
         }
+    
+        // Clear cart after successful checkout
+        $this->clearCart();
+    
+        // Redirect to success page or order summary
+        // return header("location: " . ROOT_URL_ . "?ctl=order-success");
+        return header("location: " . ROOT_URL_ . '?ctl=success');
+    }
+
+    public function clearCart()
+    {
+        unset($_SESSION['cart']);
+        unset($_SESSION['totalQuantity']);
+        unset($_SESSION['URI']);
+
+    }
+
+    public function success()
+    {
+        return view("clients.carts.success");
 
     }
 }
