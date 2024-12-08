@@ -1,12 +1,6 @@
 <?php
 
 class Order extends BaseModel {
-<<<<<<< HEAD
-    
-    // Tất cả hóa đơn
-=======
-    // Retrieve all orders with user details
->>>>>>> 551d73ed17c7469e0e0e17b3dde48d1f377fc763
     public function all() {
         $sql = "SELECT o.*, fullname, email, address, phone 
                 FROM orders o 
@@ -17,7 +11,6 @@ class Order extends BaseModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
-    // Retrieve a single order with details
     public function find($id) {
         $sql = "SELECT o.*, fullname, email, address, phone, od.price AS detail_price, od.quantity, p.name AS product_name, p.image 
                 FROM orders o 
@@ -30,7 +23,6 @@ class Order extends BaseModel {
         return $stmt->fetch(PDO::FETCH_ASSOC); // Return a single order's details
     }
 
-    // Create a new order
     public function create($data) {
         $sql = "INSERT INTO orders (user_id, status, payment_method, total_price) 
                 VALUES (:user_id, :status, :payment_method, :total_price)";
@@ -45,7 +37,6 @@ class Order extends BaseModel {
         return $this->conn->lastInsertId(); // Return the inserted order ID
     }
 
-    // Update order status
     public function updateStatus($id, $status) {
         $sql = "UPDATE orders SET status = :status WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
@@ -55,7 +46,6 @@ class Order extends BaseModel {
         ]);
     }
 
-    // Add order details
     public function createOrderDetail($data) {
         $sql = "INSERT INTO order_details (order_id, product_id, price, quantity) 
                 VALUES (:order_id, :product_id, :price, :quantity)";
@@ -66,5 +56,19 @@ class Order extends BaseModel {
             ':price' => $data['price'],
             ':quantity' => $data['quantity'],
         ]);
+    }
+
+    public function listOrderDetail($id)
+    {
+
+    }
+
+    public function findOrderUser($user_id)
+    {
+        $sql = "SELECT o.*, fullname, email, address, phone FROM orders o JOIN users u ON O.user_id=u.id WHERE o.user_id=:user_id";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['user_id' => $user_id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
