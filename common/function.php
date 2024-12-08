@@ -38,4 +38,4 @@ function translate_status($status){
         4 => 'Đã hủy'
     ];
     return $status_details[$status];
-}
+} 

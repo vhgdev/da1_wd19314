@@ -1,12 +1,10 @@
 <?php
 
 class Order extends BaseModel {
-<<<<<<< HEAD
+
     
     // Tất cả hóa đơn
-=======
     // Retrieve all orders with user details
->>>>>>> 551d73ed17c7469e0e0e17b3dde48d1f377fc763
     public function all() {
         $sql = "SELECT o.*, fullname, email, address, phone 
                 FROM orders o 
