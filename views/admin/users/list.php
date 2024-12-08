@@ -12,7 +12,7 @@
                 <th scope="col">Hoạt động</th>
                 <th scope="col">Địa chỉ</th>
                 <th scope="col">
-
+                    Cập nhật
                 </th>
             </tr>
         </thead>
@@ -41,15 +41,18 @@
                         <form action="<?= ADMIN_URL . '?ctl=updateuser' ?>" method="post">
 
                             <input type="hidden" name="id" value="<?= $user['id'] ?>">
-                            
+
                             <input type="hidden" name="active" value="<?= $user['active'] ?>">
 
                             <?php if ($user['role'] != 'admin') : ?>
-
-                                <?php if ($user['active'] == 1) : ?>
-                                    <button type="submit" class="btn btn-danger">Khóa</button>
+                                <?php if (isset($user['active']) && $user['active'] == 1) : ?>
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="bi bi-lock-fill"></i> Khóa
+                                    </button>
                                 <?php else : ?>
-                                    <button type="submit" class="btn btn-success">Kích hoạt</button>
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="bi bi-unlock-fill"></i> Kích hoạt
+                                    </button>
                                 <?php endif ?>
                             <?php endif ?>
 

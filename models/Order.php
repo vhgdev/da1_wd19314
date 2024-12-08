@@ -2,13 +2,13 @@
 
 class Order extends BaseModel
 {
-    public
-        $status_details = [
-            1 => 'Chờ xử lý',
-            2 => 'Đang xử lý',
-            3 => 'Hoàn thành',
-            4 => 'Đã hủy'
-        ];
+    public 
+    $status_details = [
+        1 => 'Chờ xử lý',
+        2 => 'Đang xử lý',
+        3 => 'Hoàn thành',
+        4 => 'Đã hủy'
+    ];
     public function all()
     {
         $sql = "SELECT o.*, fullname, email, address, phone 

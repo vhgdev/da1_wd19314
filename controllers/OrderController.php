@@ -33,8 +33,11 @@ class OrderController
 
         $orders = (new Order)->findOrderUser($user_id);
 
+        $user = $_SESSION['user'];
+
+        // dd($orders);
         $categories = (new Category)->all();
 
-        return view("clients.users.list-order", compact('order', 'categories'));
+        return view("clients.users.list-order", compact('orders', 'categories', 'user'));
     }
 }

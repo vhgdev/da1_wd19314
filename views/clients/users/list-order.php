@@ -21,7 +21,7 @@
       <td><?=   number_format($order['total_price'])?>VNĐ</td>
       <td><?= date('d-m-Y H:i:s', strtotime($order['created_at'])) ?></td>
       <td>
-        <a href="<?= ROOT_URL_ . '?ctl=order-detail-user&id' . $order['detail'] ?>" class="btn btn-primary">Chi tiết</a>
+        <a href="<?= ROOT_URL_ . '?ctl=order-detail-user&id' . $order['id'] ?>" class="btn btn-primary">Chi tiết</a>
         Hủy
       </td>
     </tr>

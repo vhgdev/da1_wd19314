@@ -22,15 +22,10 @@ $ctl = $_GET['ctl'] ?? '';
 match ($ctl) {
     '', 'home' => (new HomeController)->index(),
     // 'category' => (new ProductController)->list(),
-    // 'detail' => (new ProductController)->show(),
+    'detail' => (new ProductController)->show(),
     'register' => (new AuthController)->register(),
     'login' =>( new AuthController)->login(),
     'logout' => (new AuthController)->logout(), 
-    // 'add-cart' => (new CartController)->addToCart(),
-
-    // 'register' =>(new AuthController)->register(),
-    // 'login' =>(new AuthController)->login(),
-    'detail' => (new ProductController)->show(),
     'add-cart' => (new CartController)->addToCart(),
     'view-cart' => (new CartController)->viewCart(),
     'delete-cart' => (new CartController)->deleteProductInCart(),
