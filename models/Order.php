@@ -1,7 +1,16 @@
 <?php
 
-class Order extends BaseModel {
-    public function all() {
+class Order extends BaseModel
+{
+    public
+        $status_details = [
+            1 => 'Chờ xử lý',
+            2 => 'Đang xử lý',
+            3 => 'Hoàn thành',
+            4 => 'Đã hủy'
+        ];
+    public function all()
+    {
         $sql = "SELECT o.*, fullname, email, address, phone 
                 FROM orders o 
                 JOIN users u ON o.user_id = u.id 
@@ -10,8 +19,9 @@ class Order extends BaseModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
-    public function find($id) {
+
+    public function find($id)
+    {
         $sql = "SELECT o.*, fullname, email, address, phone, od.price AS detail_price, od.quantity, p.name AS product_name, p.image 
                 FROM orders o 
                 JOIN users u ON o.user_id = u.id 
@@ -20,10 +30,11 @@ class Order extends BaseModel {
                 WHERE o.id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['id' => $id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC); // Return a single order's details
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function create($data) {
+    public function create($data)
+    {
         $sql = "INSERT INTO orders (user_id, status, payment_method, total_price) 
                 VALUES (:user_id, :status, :payment_method, :total_price)";
         $stmt = $this->conn->prepare($sql);
@@ -37,7 +48,8 @@ class Order extends BaseModel {
         return $this->conn->lastInsertId(); // Return the inserted order ID
     }
 
-    public function updateStatus($id, $status) {
+    public function updateStatus($id, $status)
+    {
         $sql = "UPDATE orders SET status = :status WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
@@ -46,7 +58,8 @@ class Order extends BaseModel {
         ]);
     }
 
-    public function createOrderDetail($data) {
+    public function createOrderDetail($data)
+    {
         $sql = "INSERT INTO order_details (order_id, product_id, price, quantity) 
                 VALUES (:order_id, :product_id, :price, :quantity)";
         $stmt = $this->conn->prepare($sql);
@@ -60,7 +73,10 @@ class Order extends BaseModel {
 
     public function listOrderDetail($id)
     {
-
+        $sql = "SELECT od.*, name, image FROM order_details od JOIN products p ON od.product_id = p.id WHERE od.id=:id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function findOrderUser($user_id)

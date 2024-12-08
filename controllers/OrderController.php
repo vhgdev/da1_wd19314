@@ -12,7 +12,7 @@ class OrderController
     public function showOrder()
     {
         $id = $_GET['id'];
-
+        // Thay đổi trạng thái
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $status = $_POST['status'];
             (new Order)->updateStatus($id, $status);

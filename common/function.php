@@ -30,7 +30,8 @@ function session_flash($key)
 }
 
 //chuyển đổi trạng thái đơn hàng
-function translate_status($status){
+function getOrderStatus($status)
+{
     $status_details = [
         1 => 'Chờ xử lý',
         2 => 'Đang xử lý',
