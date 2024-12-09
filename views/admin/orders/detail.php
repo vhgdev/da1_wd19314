@@ -1,5 +1,3 @@
-
-
 <?php
 if (!isset($order) || empty($order)) {
     echo "Dữ liệu đơn hàng không khả dụng.";
@@ -11,6 +9,14 @@ $total = 0;
 ?>
 
 <?php include_once ROOT_DIR . "views/admin/header.php" ?>
+
+<?php if ($message != "") : ?> 
+    <div class="alert alert-success">
+        <?= $message ?>
+    </div>
+
+    <?php endif ?>
+
 
 <div class="container mt-5">
     <div class="card">
@@ -43,11 +49,11 @@ $total = 0;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($order_details as $detail): ?>
+                        <?php foreach ($order_details as $stt => $detail): ?>
 
                             <?php
-                                $totalPrice = $detail['price'] * $detail['quantity'];
-                                $total += $totalPrice;
+                            $totalPrice = $detail['price'] * $detail['quantity'];
+                            $total += $totalPrice;
                             ?>
 
                             <tr>
@@ -79,7 +85,17 @@ $total = 0;
                         <select name="status" id="orderStatus" class="form-select">
                             <?php foreach ($status as $key => $value) : ?>
                                 <option value="<?= $key ?>"
-                                    <?= $order['status'] == $key ? 'selected' : '' ?>>
+                                    <?= $order['status'] == $key ? 'selected' : '' ?>
+                                    <?php
+                                        if ( $order['status'] == 2 && in_array($key, [1,4])) {
+                                            echo "disabled";
+                                        } else if ( $order['status'] == 3 && in_array($key, [1,2,4])) {
+                                            echo "disabled";
+                                        } else if ( $order['status'] == 4 && in_array($key, [1,2,3])){
+                                            echo "disabled";
+                                        }
+
+                                    ?>>
                                     <?= $value ?>
                                 </option>
 
@@ -94,4 +110,3 @@ $total = 0;
 </div>
 
 <?php include_once ROOT_DIR . "views/admin/footer.php" ?>
-
