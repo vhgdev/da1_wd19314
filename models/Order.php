@@ -22,7 +22,7 @@ class Order extends BaseModel
 
     public function find($id)
     {
-        $sql = "SELECT o.*, fullname, email, address, phone, od.price AS detail_price, od.quantity, p.name AS product_name, p.image 
+        $sql = "SELECT o.*, fullname, email, address, phone, od.price, od.quantity, name, image
                 FROM orders o 
                 JOIN users u ON o.user_id = u.id 
                 JOIN order_details od ON od.order_id = o.id 
@@ -73,7 +73,11 @@ class Order extends BaseModel
 
     public function listOrderDetail($id)
     {
-        $sql = "SELECT od.*, name, image FROM order_details od JOIN products p ON od.product_id = p.id WHERE od.id=:id";
+        $sql = "SELECT od.*, name, image 
+                FROM order_details od
+                JOIN products p
+                ON od.product_id = p.id
+                WHERE od.order_id=:id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['id' => $id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
