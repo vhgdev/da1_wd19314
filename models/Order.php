@@ -19,10 +19,10 @@ class Order extends BaseModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    //chi tiết hóa đơn
     public function find($id)
     {
-        $sql = "SELECT o.*, fullname, email, address, phone, od.price AS detail_price, od.quantity, p.name AS product_name, p.image 
+        $sql = "SELECT o.*, fullname, email, address, phone, od.price, od.quantity, name, image
                 FROM orders o 
                 JOIN users u ON o.user_id = u.id 
                 JOIN order_details od ON od.order_id = o.id 
@@ -70,21 +70,26 @@ class Order extends BaseModel
             ':quantity' => $data['quantity'],
         ]);
     }
-
+    // danh sách sản phẩm của hóa đơn  $id : mã hóa đơn
     public function listOrderDetail($id)
     {
-        $sql = "SELECT od.*, name, image FROM order_details od JOIN products p ON od.product_id = p.id WHERE od.id=:id";
+        $sql = "SELECT od.*, name, image 
+                FROM order_details od
+                JOIN products p
+                ON od.product_id = p.id
+                WHERE od.order_id=:id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['id' => $id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    //chi tiết hóa đơn theo user 
     public function findOrderUser($user_id)
     {
-        $sql = "SELECT o.*, fullname, email, address, phone FROM orders o JOIN users u ON O.user_id=u.id WHERE o.user_id=:user_id";
+        $sql = "SELECT o.*, fullname, email, address, phone FROM orders o JOIN users u ON o.user_id=u.id WHERE o.user_id=:user_id";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['user_id' => $user_id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

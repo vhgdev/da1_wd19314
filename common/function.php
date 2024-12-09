@@ -39,4 +39,4 @@ function getOrderStatus($status)
         4 => 'Đã hủy'
     ];
     return $status_details[$status];
-}
+} 

@@ -30,7 +30,7 @@ class OrderController
         return view("admin.orders.detail", compact('order', 'order_details', 'status', 'message'));
     }
 
-
+//Hiển thị danh sách hóa đơn của user theo id
     public function showOrderUser(){
         $user_id = $_SESSION['user']['id'];
 
@@ -44,6 +44,14 @@ class OrderController
         return view("clients.users.list-order", compact('orders', 'categories', 'user'));
     }
 
+<<<<<<< HEAD
+    public function detailOrderUser(){
+        $id = $_GET['id'];
+        // Thay đổi trạng thái
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+            $status = $_POST['status'];
+            (new Order)->updateStatus($id, $status);
+=======
     public function detailOrderUser()
     {
         $id = $_GET['id'];
@@ -52,6 +60,7 @@ class OrderController
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
             (new Order)->updateStatus($id, 4);
             $message = "Cập nhật trạng thái thành công";
+>>>>>>> 6e7f0bfde14b059a53697b26f293895c1af9666c
         }
 
         $order = (new Order)->find($id);
@@ -60,6 +69,10 @@ class OrderController
 
         $status = (new Order)->status_details;
 
+<<<<<<< HEAD
+        return view("clients.users.detail-order", compact('order', 'order_details', 'status'));
+=======
         return view("admin.orders.detail", compact('order', 'order_details', 'status', 'message'));
+>>>>>>> 6e7f0bfde14b059a53697b26f293895c1af9666c
     }
 }
