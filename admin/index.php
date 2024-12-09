@@ -45,5 +45,6 @@ match ($ctl) {
     'updateuser' => (new AuthController)->updateActive(),
 
     //Order
-    'list-order'=> (new OrderController)->index(),
+    'list-order' => (new OrderController)->index(),
+    'detail-order' => (new OrderController)->showOrder(),
 };

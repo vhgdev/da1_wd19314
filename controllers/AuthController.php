@@ -73,15 +73,6 @@ class AuthController{
     //     return view('admin.users.list', compact('users'));
     // }
 
-    // public function updateActive() {
-    //     $data = $_POST;
-
-    //     $data['active'] = $data['active'] ? 0 : 1;
-
-    //     (new User)->updateActive($data['id'], $data['active']);
-    //     return header('location: ' . ADMIN_URL . '?ctl=listuser');
-
-    // }
 
     public function logout() {
 

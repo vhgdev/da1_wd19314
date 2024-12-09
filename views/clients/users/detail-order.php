@@ -1,5 +1,3 @@
-
-
 <?php
 if (!isset($order) || empty($order)) {
     echo "Dữ liệu đơn hàng không khả dụng.";
@@ -9,9 +7,7 @@ $orderDate = !empty($order['created_at']) ? date('d-m-Y H:i:s', strtotime($order
 $stt = 0;
 $total = 0;
 ?>
-
-<?php include_once ROOT_DIR . "views/admin/header.php" ?>
-
+<?php include_once ROOT_DIR . "views/clients/header.php" ?>
 <div class="container mt-5">
     <div class="card">
         <div class="card-header bg-dark text-white">
@@ -43,29 +39,26 @@ $total = 0;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($order_details as $detail): ?>
 
-                            <?php
-                                $totalPrice = $detail['price'] * $detail['quantity'];
-                                $total += $totalPrice;
-                            ?>
-
-                            <tr>
-                                <td><?= $stt + 1 ?></td>
-                                <td><?= $detail['name'] ?></td>
-                                <td>
-                                    <img src="<?= ROOT_URL_ . $detail['image']  ?>" width="60" alt="">
-                                </td>
-                                <td><?= number_format($detail['price']) ?></td>
-                                <td><?= $detail['quantity'] ?></td>
-                                <td><?= number_format($totalPrice) ?></td>
-                            </tr>
-                        <?php endforeach ?>
+                       <tbody>
+                            <?php foreach ($order_details as $stt => $detail) : ?>
+                                <tr>
+                                    <td><?= $stt+1 ?></td> <!-- Tăng thứ tự sau mỗi vòng lặp -->
+                                    <td><?= $detail['name'] ?></td>
+                                    <td>
+                                        <img src="<?= ROOT_URL_ . $detail['image'] ?>" width="60" alt="Hình sản phẩm">
+                                    </td>
+                                    <td><?= number_format($detail['price']) ?></td>
+                                    <td><?= $detail['quantity'] ?></td>
+                                    <td><?= number_format($detail['quantity'] * $detail['price']) ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                    </tbody>
                     </tbody>
                     <tfoot>
                         <tr>
                             <th colspan="5" class="text-end">Tổng cộng: </th>
-                            <th><?= number_format($total) ?></th>
+                            <th><?= number_format($order['total_price']) ?></th>
                         </tr>
                     </tfoot>
                 </table>
@@ -93,5 +86,4 @@ $total = 0;
     </div>
 </div>
 
-<?php include_once ROOT_DIR . "views/admin/footer.php" ?>
-
+<?php include_once ROOT_DIR . "views/clients/footer.php" ?>

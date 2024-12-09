@@ -53,6 +53,7 @@
 					<?php if (isset($_SESSION['users'])) : ?>
 						<li><a href="<?= ROOT_URL_ ?>"></a><i class="fa fa-dollar"><?= $_SESSION['user']['fullname'] ?? ''  ?></i>Đăng nhập</a></li>
 						<li><a href="<?= ROOT_URL_ ?>"><i class="fa fa-user-o"></i> Đăng ký</a></li>
+						<li><a href="<?= ROOT_URL_ .'ctl=list-order' ?>"><i class="fa fa-user-o"></i>  Lịch sử đơn hàng</a></li>
 					<?php else : ?>
 
 						<li>
