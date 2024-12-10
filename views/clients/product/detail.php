@@ -75,6 +75,24 @@
 							<?php endif  ?>
 						</div>
 						<p><?= $product['description'] ?></p>
+								<hr>
+						<!-- Bình luận -->
+						<div class="comment">
+						 <?php foreach ($comments as $comment):?>
+							<p>
+								<b><?= $comment['fullname']?></b> <?= date('d-m-Y H:i:s', strtotime($comment['create_at']))?> <br>
+								<?= $comment['content']?>
+							</p>
+							<?php endforeach  ?>
+							</div>
+							<?php if(isset($_SESSION['user'])) :?>
+								<form action="" method="post">
+									<textarea name="content" rows="3" cols="60" required id=""></textarea>
+									<br><button type="submit">Gửi</button>
+								</form>
+								<?php else:?>
+									<div>Bạn cần<b><?= ROOT_URL_. '?ctl=login'?></b>để bình luận</div>
+							<?php endif ?>
 
 
 						<div class="add-to-cart">

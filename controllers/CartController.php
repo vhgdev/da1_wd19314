@@ -106,7 +106,7 @@ class CartController
 
     public function checkOut()
     {
-        // Validate required fields
+        
         $user_id = $_POST['user_id'] ?? null;
         $fullname = $_POST['fullname'] ?? null;
         $phone = $_POST['phone'] ?? null;
@@ -117,7 +117,7 @@ class CartController
             die("Missing required checkout information. Please try again.");
         }
     
-        // Update user information
+        
         $user = [
             'id' => $user_id,
             'fullname' => $fullname,
@@ -128,7 +128,7 @@ class CartController
         ];
         (new User)->update($user_id, $user);
     
-        // Create order
+        
         $sumPrice = $this->totalPriceInCart();
         $order = [
             'user_id' => $user_id,
@@ -138,7 +138,7 @@ class CartController
         ];
         $order_id = (new Order)->create($order);
     
-        // Create order details
+        
         $carts = $_SESSION['cart'] ?? [];
         foreach ($carts as $id => $cart) {
             $order_detail = [
@@ -150,10 +150,10 @@ class CartController
             (new Order)->createOrderDetail($order_detail);
         }
     
-        // Clear cart after successful checkout
+       
         $this->clearCart();
     
-        // Redirect to success page or order summary
+        
         // return header("location: " . ROOT_URL_ . "?ctl=order-success");
         return header("location: " . ROOT_URL_ . '?ctl=success');
     }

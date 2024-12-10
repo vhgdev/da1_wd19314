@@ -29,21 +29,33 @@ class ProductController
 
         $product = (new Product)->find($id);
 
+        //Thêm comment
+        if($_SERVER['REQUEST_METHOD']==="POST"){
+            $data=$_POST;
+            //Thêm product_id và User_id
+            $data['product_id'] = $id;
+            $data['user_id'] = $_SESSION['user']['id'];
+            (new Comment)->create($data);
+        }
+
         $categories = (new Category)->all();
 
         $title = $product['name'] ?? "";
 
-        //Danh sách ản phẩm
+        //Danh sách sản phẩm
         $productReleads = (new Product)->listProductReload($product['category_id'], $id);
         
-        //Lưu thông tin uri
+        //Lưu thông tin url
         $_SESSION['URI'] = $_SERVER['REQUEST_URI'];
 
         $_SESSION['totalQuantity'] = (new CartController)->totalQuantityInCart();
 
+        //Lấy danh sách comments
+        $comments = (new Comment)->listCommentInProduct($id);
+
         return view(
             'clients.product.detail',
-            compact('product','categories','title','productReleads')
+            compact('product','categories','title','productReleads','comments')
         );
     }
 }
