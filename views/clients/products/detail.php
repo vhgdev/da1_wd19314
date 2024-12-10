@@ -58,16 +58,14 @@
 					<div class="product-details">
 						<h2 class="product-name"><?= $product['name'] ?></h2>
 						<div sty>
-							<span style="font-size:150%;color:red;">★</span>
-							<span style="font-size:150%;color:red;">★</span>
-							<span style="font-size:150%;color:red;">★</span>
-							<span style="font-size:150%;color:red;">★</span>
-							<span style="font-size:150%;color:red;">★</span>
-
-							<a class="review-link" href="#">10 Review(s) | Add your review</a>
+							<span style="font-size:150%;color:#D10024;">★</span>
+							<span style="font-size:150%;color:#D10024;">★</span>
+							<span style="font-size:150%;color:#D10024;">★</span>
+							<span style="font-size:150%;color:#D10024;">★</span>
+							<span style="font-size:150%;color:#D10024;">★</span>
 						</div>
 						<div>
-							<h3 class="product-price"><?= number_format($product['price']) ?> VNĐ</h3>
+							<h2 class="product-price"><?= number_format($product['price']) ?> VNĐ</h2>
 							<?php if ($product['quantity'] > 0) : ?>
 								<span class="product-available">Còn hàng</span>
 							<?php else : ?>
@@ -89,25 +87,6 @@
 							<a href="<?= ROOT_URL_ .  '?ctl=add-cart&id=' . $product['id'] ?>" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
 						</div>
 
-						<ul class="product-btns">
-							<li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
-							<li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
-						</ul>
-
-						<ul class="product-links">
-							<li>Category:</li>
-							<li><a href="#">Headphones</a></li>
-							<li><a href="#">Accessories</a></li>
-						</ul>
-
-						<ul class="product-links">
-							<li>Share:</li>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="#"><i class="fa fa-envelope"></i></a></li>
-						</ul>
-
 					</div>
 				</div>
 				<!-- /Product details -->
@@ -118,7 +97,6 @@
 						<!-- product tab nav -->
 						<ul class="tab-nav">
 							<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-							<li><a data-toggle="tab" href="#tab2">Details</a></li>
 							<li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
 						</ul>
 						<!-- /product tab nav -->
@@ -363,39 +341,4 @@
 	</div>
 	<!-- /Section -->
 
-	<!-- NEWSLETTER -->
-	<div id="newsletter" class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				<div class="col-md-12">
-					<div class="newsletter">
-						<p>Sign Up for the <strong>NEWSLETTER</strong></p>
-						<form>
-							<input class="input" type="email" placeholder="Enter Your Email">
-							<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
-						</form>
-						<ul class="newsletter-follow">
-							<li>
-								<a href="#"><i class="fa fa-facebook"></i></a>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-twitter"></i></a>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-instagram"></i></a>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-pinterest"></i></a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /NEWSLETTER -->
 	<?php include_once ROOT_DIR . "./views/clients/footer.php" ?>

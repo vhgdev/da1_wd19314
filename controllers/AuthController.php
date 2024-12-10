@@ -58,24 +58,12 @@ class AuthController{
 
     }
 
-    // public function logout() {
 
-    // }
-
-        
-
-    // public function logout() {
-
-    // }
-
-    // public function index() {
-    //     $users = (new User)->all();
-    //     return view('admin.users.list', compact('users'));
-    // }
-
-
-    public function logout() {
-
+    public function logout()
+    {
+        session_unset();
+        session_destroy();
+        header("location: index.php");
     }
 
     public function index() {

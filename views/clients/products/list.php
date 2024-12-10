@@ -1,21 +1,21 @@
 <?php include_once ROOT_DIR . "views/clients/header.php" ?>
 
 <div class="container mt-5">
-    <h2 class="mt-5"><?= $title ?></h2>
+    <br><h2 class="mt-5"><?= $category_name ?></h2>
     <div class="row g-4">
-        <?php foreach ($products as $pro) : ?>
+        <?php foreach ($products as $product) : ?>
             <!-- Box Sản Phẩm -->
             <div class="col-md-3">
                 <div class="product-box">
                     <div class="product-img">
-                        <img src="<?= $pro['image'] ?>" alt="Product Image" >
+                        <img src="<?= ROOT_URL_. $product['image'] ?>" alt="Product Image" >
                     </div>         
                     <div class="product-body">
-                        <a href="<?= ROOT_URL_ . '?ctl=detail&id=' . $pro['id'] ?>">
-                            <h5 class="product-name"><?= $pro['name'] ?></h5>
+                        <a href="<?= ROOT_URL_ . '?ctl=detail&id=' . $product['id'] ?>">
+                            <h5 class="product-name"><?= $product['name'] ?></h5>
                         </a>
                         <div>
-                            <span class="product-price"><?= $pro['price'] ?></span>
+                            <span class="product-price"><?= number_format($product['price']) ?> VNĐ</span>
                         </div>
                         <div class="product-buttons">
                             <button class="btn btn-outline-success">Thêm vào giỏ hàng</button>

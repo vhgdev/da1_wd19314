@@ -42,8 +42,21 @@ class ProductController
         $_SESSION['totalQuantity'] = (new CartController)->totalQuantityInCart();
 
         return view(
-            'clients.product.detail',
+            'clients.products.detail',
             compact('product','categories','title','productReleads')
         );
+    }
+
+    public function list()
+    {
+        $id = $_GET['id'];
+        $products = (new Product)->listProductInCategory($id);
+
+        $category_name = ( new Category ) -> find($id)['cate_name'];
+
+        $categories = ( new Category )-> all();
+        $title = $category_name;
+
+        return view('clients.products.list', compact('products', 'category_name', 'title', 'categories'));
     }
 }
