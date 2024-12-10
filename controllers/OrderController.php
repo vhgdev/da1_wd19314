@@ -46,7 +46,6 @@ class OrderController
 
 
     
-    
     public function detailOrderUser()
     {
         $id = $_GET['id'];
@@ -66,9 +65,9 @@ class OrderController
         $status = (new Order)->status_details;
 
 
-    
+        
 
-        return view("admin.orders.detail", compact('order', 'order_details', 'status', 'message'));
- 
+        return view("clients.users.detail-order", compact('order', 'order_details', 'status', 'message'));
+    
     }
 }

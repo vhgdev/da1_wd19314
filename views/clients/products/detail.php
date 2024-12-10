@@ -58,16 +58,14 @@
 					<div class="product-details">
 						<h2 class="product-name"><?= $product['name'] ?></h2>
 						<div sty>
-							<span style="font-size:150%;color:red;">★</span>
-							<span style="font-size:150%;color:red;">★</span>
-							<span style="font-size:150%;color:red;">★</span>
-							<span style="font-size:150%;color:red;">★</span>
-							<span style="font-size:150%;color:red;">★</span>
-
-							<a class="review-link" href="#">10 Review(s) | Add your review</a>
+							<span style="font-size:150%;color:#D10024;">★</span>
+							<span style="font-size:150%;color:#D10024;">★</span>
+							<span style="font-size:150%;color:#D10024;">★</span>
+							<span style="font-size:150%;color:#D10024;">★</span>
+							<span style="font-size:150%;color:#D10024;">★</span>
 						</div>
 						<div>
-							<h3 class="product-price"><?= number_format($product['price']) ?> VNĐ</h3>
+							<h2 class="product-price"><?= number_format($product['price']) ?> VNĐ</h2>
 							<?php if ($product['quantity'] > 0) : ?>
 								<span class="product-available">Còn hàng</span>
 							<?php else : ?>
@@ -107,25 +105,6 @@
 							<a href="<?= ROOT_URL_ .  '?ctl=add-cart&id=' . $product['id'] ?>" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
 						</div>
 
-						<ul class="product-btns">
-							<li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
-							<li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
-						</ul>
-
-						<ul class="product-links">
-							<li>Category:</li>
-							<li><a href="#">Headphones</a></li>
-							<li><a href="#">Accessories</a></li>
-						</ul>
-
-						<ul class="product-links">
-							<li>Share:</li>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="#"><i class="fa fa-envelope"></i></a></li>
-						</ul>
-
 					</div>
 				</div>
 				<!-- /Product details -->
@@ -136,8 +115,12 @@
 						<!-- product tab nav -->
 						<ul class="tab-nav">
 							<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-							<li><a data-toggle="tab" href="#tab2">Details</a></li>
+<<<<<<< HEAD:views/clients/products/detail.php
 							<li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
+=======
+							<li><a data-toggle="tab" href="#tab2">Details</a></li>
+							<li><a data-toggle="tab" href="#tab3">Reviews</a></li>
+>>>>>>> 6797dcb7db107f8fb7785022f88a0834eb81ef7b:views/clients/product/detail.php
 						</ul>
 						<!-- /product tab nav -->
 
@@ -167,7 +150,7 @@
 							<div id="tab3" class="tab-pane fade in">
 								<div class="row">
 									<!-- Rating -->
-									<div class="col-md-3">
+									<!-- <div class="col-md-3">
 										<div id="rating">
 											<div class="rating-avg">
 												<span>4.5</span>
@@ -247,75 +230,48 @@
 												</li>
 											</ul>
 										</div>
-									</div>
+									</div> -->
 									<!-- /Rating -->
 
-									<!-- Reviews -->
+									<!-- Reviews Bình luận -->
 									<div class="col-md-6">
 										<div id="reviews">
+											<?php foreach($comments as $comment): ?>
 											<ul class="reviews">
 												<li>
 													<div class="review-heading">
-														<h5 class="name">John</h5>
-														<p class="date">27 DEC 2018, 8:0 PM</p>
-														<div class="review-rating">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o empty"></i>
-														</div>
+														<h5 class="name"><?= $comment['fullname']?></h5>
+														<p class="date"><?= date('d-m-Y H:i:s', strtotime($comment['created_at']))?></p>
 													</div>
 													<div class="review-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-													</div>
-												</li>
-												<li>
-													<div class="review-heading">
-														<h5 class="name">John</h5>
-														<p class="date">27 DEC 2018, 8:0 PM</p>
-														<div class="review-rating">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o empty"></i>
-														</div>
-													</div>
-													<div class="review-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-													</div>
-												</li>
-												<li>
-													<div class="review-heading">
-														<h5 class="name">John</h5>
-														<p class="date">27 DEC 2018, 8:0 PM</p>
-														<div class="review-rating">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o empty"></i>
-														</div>
-													</div>
-													<div class="review-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+														<p><?= $comment['content']?></p>
 													</div>
 												</li>
 											</ul>
-											<ul class="reviews-pagination">
+											<?php endforeach ?>
+											
+											<!-- <ul class="reviews-pagination">
 												<li class="active">1</li>
 												<li><a href="#">2</a></li>
 												<li><a href="#">3</a></li>
 												<li><a href="#">4</a></li>
 												<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-											</ul>
+											</ul> -->
 										</div>
 									</div>
 									<!-- /Reviews -->
 
 									<!-- Review Form -->
-									<div class="col-md-3">
+									<?php if (isset($_SESSION['user'])): ?>
+										<form action="" method="post">
+											<textarea name="content" rows="3" cols="60" require id="content" placeholder="Write your comment here..."></textarea>
+											<br>
+											<button type="submit">Gửi</button>
+										</form>
+									<?php else: ?>
+										<div>Bạn cần <b><a href="<?= ROOT_URL_ . '?ctl=login'?>"></a></b> để bình luận</div>
+									<?php endif; ?>
+									<!-- <div class="col-md-3">
 										<div id="review-form">
 											<form class="review-form">
 												<input class="input" type="text" placeholder="Your Name">
@@ -334,7 +290,7 @@
 												<button class="primary-btn">Submit</button>
 											</form>
 										</div>
-									</div>
+									</div> -->
 									<!-- /Review Form -->
 								</div>
 							</div>
@@ -381,39 +337,4 @@
 	</div>
 	<!-- /Section -->
 
-	<!-- NEWSLETTER -->
-	<div id="newsletter" class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				<div class="col-md-12">
-					<div class="newsletter">
-						<p>Sign Up for the <strong>NEWSLETTER</strong></p>
-						<form>
-							<input class="input" type="email" placeholder="Enter Your Email">
-							<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
-						</form>
-						<ul class="newsletter-follow">
-							<li>
-								<a href="#"><i class="fa fa-facebook"></i></a>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-twitter"></i></a>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-instagram"></i></a>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-pinterest"></i></a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /NEWSLETTER -->
 	<?php include_once ROOT_DIR . "./views/clients/footer.php" ?>

@@ -7,11 +7,14 @@ $orderDate = !empty($order['created_at']) ? date('d-m-Y H:i:s', strtotime($order
 $stt = 0;
 $total = 0;
 ?>
+
 <?php include_once ROOT_DIR . "views/clients/header.php" ?>
+
+
 <div class="container mt-5">
     <div class="card">
         <div class="card-header bg-dark text-white">
-            <h4>Chi tiết đơn hàng</h4>
+            <br><h3>Chi tiết đơn hàng</h3>
         </div>
         <div class="card-body">
             <div class="mb-4">
@@ -61,7 +64,7 @@ $total = 0;
                             <th><?= number_format($order['total_price']) ?></th>
                         </tr>
                     </tfoot>
-                </table>
+                    </table>
             </div>
 
             <div class="mb-4">

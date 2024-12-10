@@ -25,17 +25,17 @@ class ProductController
     
     //Chi tiết sản phẩm 
     public function show() {
-        $id = $_GET['id']; //d sản phẩm
+        $id = $_GET['id']; //id sản phẩm
 
         $product = (new Product)->find($id);
 
         //Thêm comment
-        if($_SERVER['REQUEST_METHOD']==="POST"){
-            $data=$_POST;
-            //Thêm product_id và User_id
+        if($_SERVER['REQUEST_METHOD'] === "POST"){
+            $data = $_POST;
+            //Thêm product_id và user_id
             $data['product_id'] = $id;
             $data['user_id'] = $_SESSION['user']['id'];
-            (new Comment)->create($data);
+            (new Comment) ->create($data);
         }
 
         $categories = (new Category)->all();
@@ -49,13 +49,24 @@ class ProductController
         $_SESSION['URI'] = $_SERVER['REQUEST_URI'];
 
         $_SESSION['totalQuantity'] = (new CartController)->totalQuantityInCart();
-
-        //Lấy danh sách comments
+        //Lấy danh sách commit
         $comments = (new Comment)->listCommentInProduct($id);
-
         return view(
             'clients.product.detail',
-            compact('product','categories','title','productReleads','comments')
+            compact('product','categories','title','productReleads', 'comments')
         );
+    }
+
+    public function list()
+    {
+        $id = $_GET['id'];
+        $products = (new Product)->listProductInCategory($id);
+
+        $category_name = ( new Category ) -> find($id)['cate_name'];
+
+        $categories = ( new Category )-> all();
+        $title = $category_name;
+
+        return view('clients.products.list', compact('products', 'category_name', 'title', 'categories'));
     }
 }

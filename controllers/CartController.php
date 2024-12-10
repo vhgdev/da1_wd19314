@@ -59,16 +59,16 @@ class CartController
     }
 
     // Hàm hiển thị chi tiết giỏ hàng
-    public function viewCart()
-    {
-        $carts = $_SESSION['cart'] ?? [];
+        public function viewCart()
+        {
+            $carts = $_SESSION['cart'] ?? [];
 
-        $categories = (new Category)->all();
+            $categories = (new Category)->all();
 
-        $totalPrice = $this->totalPriceInCart();
+            $totalPrice = $this->totalPriceInCart();
 
-        return view('clients.carts.cart', compact('carts', 'categories', 'totalPrice'));
-    }
+            return view('clients.carts.cart', compact('carts', 'categories', 'totalPrice'));
+        }
 
     // Xóa sản phẩm trong giỏ hàng
     public function deleteProductInCart()

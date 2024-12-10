@@ -3,11 +3,10 @@
 class HomeController
 {
     public function index()
-    {
-        //lấy các sản phẩm là laptopgaming
-        $laptops = (new Product)->listProductLapGaming();
-        //Lấy các sản phẩm không phải laptopgaming
-        $products = (new Product)->listProductOtherLaptop();
+    {   
+        $product = new Product;
+        $laptops = (new Product)->listProductInCategory(1); // Danh sach san pham laptop
+        $products = (new Product)->listProductInCategory(2); // Danh sach san pham phu kien
 
         //lấy danh mục
         $categories = (new Category)->all();
