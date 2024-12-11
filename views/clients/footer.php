@@ -18,18 +18,6 @@
 							</div>
 						</div>
 
-						<div class="col-md-3 col-xs-6">
-							<div class="footer">
-								<h3 class="footer-title">Danh mục</h3>
-								<ul class="footer-links">
-									<li><a href="#">Khuyến mại</a></li>
-									<li><a href="#">Laptops văn phòng</a></li>
-									<li><a href="#">Laptops gaming</a></li>
-									<li><a href="#">Phụ kiện</a></li>
-								</ul>
-							</div>
-						</div>
-
 						<div class="clearfix visible-xs"></div>
 
 						<div class="col-md-3 col-xs-6">
@@ -49,10 +37,8 @@
 								<h3 class="footer-title">Dịch vụ</h3>
 								<ul class="footer-links">
 									<li><a href="#">Tài khoản của tôi</a></li>
-									<li><a href="#">Xem giỏ hàng</a></li>
-									<li><a href="#">Sản phẩm yêu thích</a></li>
-									<li><a href="#">Theo dõi đơn hàng</a></li>
-									<li><a href="#">Hỏi đáp tổng đài viên</a></li>
+									<li><a href="<?= ROOT_URL_ . '?ctl=view-cart' ?>">Xem giỏ hàng</a></li>
+									<li><a href="<?= ROOT_URL_ . '?ctl=list-order' ?>">Theo dõi đơn hàng</a></li>
 								</ul>
 							</div>
 						</div>

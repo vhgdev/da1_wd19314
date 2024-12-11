@@ -45,21 +45,21 @@
 			<div class="container">
 				<ul class="header-links pull-left">
 					<li><a href="#"> +868882950</a></li>
-					<li><a href="#"><i class="fa fa-envelope-o"></i> fptedu@email.com</a></li>
-					<li><a href="#"><i class="fa fa-map-marker"></i> Trịnh Văn Bô</a></li>
+					<li><a href="#"></i> fptedu@email.com</a></li>
+					<li><a href="#"></i> Trịnh Văn Bô</a></li>
 				</ul>
-				<ul class="header-links pull-right" style="color: white">
+				<ul class="header-links pull-right" style="color: white;">
 					<?= $_SESSION['user']['fullname'] ?? ''  ?>
 					<?php if (isset($_SESSION['user'])) : ?>
-						<li><a href="<?= ROOT_URL_ . '?ctl=logout' ?>"><i class="fa fa-user-o"></i> Đăng xuất</a></li>
-						<li><a href="<?= ROOT_URL_ . '?ctl=list-order' ?>"><i class="fa fa-user-o"></i> Lịch sử đơn hàng</a></li>
+						<li><a href="<?= ROOT_URL_ . '?ctl=logout' ?>" style="margin-left: 30px"></i> Đăng xuất</a></li>
+						<li><a href="<?= ROOT_URL_ . '?ctl=list-order' ?>"></i> Lịch sử đơn hàng</a></li>
 					<?php else : ?>
 
 						<li>
-							<a href="<?= ROOT_URL_ . '?ctl=login' ?>"><i class="fa fa-user-o"></i> Đăng nhập</a>
+							<a href="<?= ROOT_URL_ . '?ctl=login' ?>"></i> Đăng nhập</a>
 						</li>
 
-						<li><a href="<?= ROOT_URL_ . '?ctl=register' ?>"><i class="fa fa-user-o"></i> Đăng ký</a>
+						<li><a href="<?= ROOT_URL_ . '?ctl=register' ?>"></i> Đăng ký</a>
 						</li>
 
 					<?php endif	?>

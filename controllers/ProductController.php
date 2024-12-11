@@ -52,7 +52,7 @@ class ProductController
         //Lấy danh sách commit
         $comments = (new Comment)->listCommentInProduct($id);
         return view(
-            'clients.product.detail',
+            'clients.products.detail',
             compact('product','categories','title','productReleads', 'comments')
         );
     }

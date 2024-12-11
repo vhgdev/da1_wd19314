@@ -10,7 +10,7 @@
 
 <body>
     <div class="container">
-        <h1>Trang ADMIN</h1>
+        <br><h1>Trang ADMIN</h1><br>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Menu</a>
@@ -38,11 +38,6 @@
 
 
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search"
-                         placeholder="Search" aria-label="Search" name="keyword">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
                 </div>
             </div>
         </nav>

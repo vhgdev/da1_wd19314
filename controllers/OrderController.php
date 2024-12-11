@@ -53,7 +53,6 @@ class OrderController
         // Thay đổi trạng thái
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
             (new Order)->updateStatus($id, 4);
-            $message = "Cập nhật trạng thái thành công";
 
         }
     
@@ -67,7 +66,7 @@ class OrderController
 
         
 
-        return view("clients.users.detail-order", compact('order', 'order_details', 'status', 'message'));
+        return view("clients.users.detail-order", compact('order', 'order_details', 'status'));
     
     }
 }
