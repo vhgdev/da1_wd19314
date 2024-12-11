@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 10, 2024 at 02:57 PM
+-- Generation Time: Dec 11, 2024 at 07:24 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -39,10 +39,40 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `cate_name`, `type`, `soft_delete`) VALUES
-(1, 'Laptop Gaming', 1, 0),
-(2, 'Laptop văn phòng', 1, 0),
-(5, 'Bàn phím', 0, 0),
-(6, 'Tai nghe', 0, 0);
+(1, 'Laptops', 1, 0),
+(2, 'Phụ kiện', 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `content` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `user_id`, `product_id`, `content`, `created_at`) VALUES
+(1, 10, 42, '123', '2024-12-10 18:47:39'),
+(2, 10, 42, '123', '2024-12-10 18:48:00'),
+(3, 10, 42, '123', '2024-12-10 18:48:15'),
+(4, 10, 42, '123', '2024-12-10 18:48:17'),
+(5, 10, 42, '123', '2024-12-10 18:48:21'),
+(6, 10, 42, 'minh an cut\r\n', '2024-12-10 18:48:46'),
+(7, 10, 42, 'áđâsd', '2024-12-10 18:49:02'),
+(8, 10, 37, 'minh tuan', '2024-12-11 05:27:05'),
+(9, 10, 37, 'minh tuan', '2024-12-11 05:27:32'),
+(10, 10, 37, 'minh tuan', '2024-12-11 05:27:49'),
+(11, 10, 37, 'minh tuan', '2024-12-11 05:27:51'),
+(12, 10, 37, 'minh tuan', '2024-12-11 05:29:30');
 
 -- --------------------------------------------------------
 
@@ -64,14 +94,16 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `status`, `payment_method`, `total_price`, `created_at`) VALUES
-(7, 10, '3', 'cod', '26988000.00', '2024-12-08 16:49:39'),
-(8, 10, '3', 'cod', '46649000.00', '2024-12-09 06:30:55'),
+(7, 10, '4', 'cod', '26988000.00', '2024-12-08 16:49:39'),
+(8, 10, '4', 'cod', '46649000.00', '2024-12-09 06:30:55'),
 (9, 10, '2', 'bank', '54439000.00', '2024-12-09 06:53:36'),
-(10, 10, '1', 'bank', '50640000.00', '2024-12-09 07:14:38'),
+(10, 10, '3', 'bank', '50640000.00', '2024-12-09 07:14:38'),
 (11, 11, '2', 'cod', '18949000.00', '2024-12-10 13:47:46'),
 (12, 10, '3', 'bank', '17799000.00', '2024-12-10 14:21:55'),
 (13, 11, '4', 'bank', '32450000.00', '2024-12-10 14:44:42'),
-(14, 11, '3', 'cod', '13950000.00', '2024-12-10 14:45:27');
+(14, 11, '3', 'cod', '13950000.00', '2024-12-10 14:45:27'),
+(15, 10, '4', 'bank', '19990000.00', '2024-12-10 15:14:51'),
+(16, 10, '1', 'bank', '13950000.00', '2024-12-11 06:31:24');
 
 -- --------------------------------------------------------
 
@@ -116,7 +148,9 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `price`, `quantity`
 (22, 13, 37, 13950000, 1),
 (23, 13, 38, 1800000, 1),
 (24, 13, 42, 16700000, 1),
-(25, 14, 37, 13950000, 1);
+(25, 14, 37, 13950000, 1),
+(26, 15, 43, 19990000, 1),
+(27, 16, 37, 13950000, 1);
 
 -- --------------------------------------------------------
 
@@ -141,13 +175,18 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `name`, `image`, `price`, `quantity`, `description`, `status`, `category_id`) VALUES
 (36, 'ASUS ROG Strix G15', 'images/s-l1200 (1).jpg', 15999000, 100, 'ASUS ROG Strix G15 là một laptop gaming hiệu suất cao, được thiết kế dành riêng cho game thủ với cấu hình mạnh mẽ và thiết kế hầm hố. Máy được trang bị vi xử lý AMD Ryzen hoặc Intel Core thế hệ mới nhất, kết hợp với GPU NVIDIA GeForce RTX, đảm bảo hiệu năng vượt trội trong các tựa game AAA và ứng dụng đồ họa nặng.\r\n\r\nMàn hình 15.6 inch Full HD có tần số quét lên đến 300Hz, mang lại trải nghiệm chơi game mượt mà và sắc nét. Hệ thống làm mát tiên tiến với công nghệ keo tản nhiệt kim loại lỏng giúp duy trì hiệu suất ổn định. Bàn phím RGB Per-Key tùy chỉnh qua Aura Sync, thiết kế khung máy chắc chắn, và âm thanh sống động từ Dolby Atmos nâng cao trải nghiệm toàn diện.\r\n\r\nASUS ROG Strix G15 là lựa chọn lý tưởng cho game thủ yêu cầu sức mạnh và thẩm mỹ.', 1, 1),
-(37, 'Laptop ASUS Vivobook 15', 'images/75759_laptop_hp_14s_ep0110tu__8c5k9pa____2_ (1).jpg', 13950000, 100, 'ASUS VivoBook 15 là một chiếc laptop đa dụng, phù hợp cho học tập, làm việc và giải trí, với thiết kế mỏng nhẹ, hiện đại. Máy được trang bị màn hình 15.6 inch Full HD với viền NanoEdge siêu mỏng, mang lại trải nghiệm hiển thị rộng rãi, sắc nét.\r\n\r\nCấu hình linh hoạt với bộ vi xử lý Intel Core hoặc AMD Ryzen (tùy phiên bản), kết hợp với RAM lên đến 16GB và ổ cứng SSD, giúp xử lý các tác vụ nhanh chóng và mượt mà. Bàn phím công thái học với đèn nền, hành trình phím êm ái, hỗ trợ làm việc trong điều kiện thiếu sáng.\r\n\r\nMáy có nhiều cổng kết nối, bao gồm USB-C, USB-A, HDMI, và đầu đọc thẻ microSD, đáp ứng nhu cầu đa dạng. Pin bền bỉ và hỗ trợ sạc nhanh, VivoBook 15 là lựa chọn đáng giá cho người dùng cần sự linh hoạt và hiệu năng ổn định.', 1, 2),
-(38, 'Airpods 2', 'images/image_2019-03-29_09-12-07_2.webp', 1800000, 123, 'AirPods 2 là tai nghe không dây của Apple, mang lại sự tiện lợi và chất lượng âm thanh ấn tượng. Sản phẩm sử dụng chip H1, giúp kết nối nhanh hơn và ổn định với các thiết bị Apple, đồng thời hỗ trợ điều khiển bằng giọng nói \"Hey Siri\".\r\n\r\nAirPods 2 có thiết kế nhỏ gọn, thoải mái, vừa vặn với tai người dùng. Thời lượng pin cho phép nghe nhạc liên tục 5 giờ, và hộp sạc cung cấp thêm 24 giờ sử dụng. Hộp sạc có hai phiên bản: sạc thường và sạc không dây, phù hợp với mọi nhu cầu. Đây là lựa chọn hoàn hảo cho trải nghiệm âm thanh tiện lợi, liền mạch và phong cách.', 1, 6),
-(39, 'Aula F75', 'images/61saIDfK1CL.jpg', 1999000, 100, 'Aula F75 là một bàn phím cơ chuyên dụng dành cho game thủ, nổi bật với thiết kế mạnh mẽ và hiệu suất cao. Bàn phím có layout full-size với 104 phím, phù hợp cho cả chơi game và làm việc. Trang bị switch cơ học (có nhiều loại để lựa chọn), Aula F75 mang lại cảm giác gõ nhạy, độ bền cao, và phản hồi tốt.\r\n\r\nĐặc biệt, hệ thống đèn RGB đa dạng với các chế độ tùy chỉnh giúp tăng tính thẩm mỹ và tạo không gian chơi game sống động. Bàn phím còn hỗ trợ anti-ghosting toàn phần, đảm bảo nhận đủ mọi thao tác. Với thiết kế khung kim loại chắc chắn và khả năng kết nối qua cổng USB, Aula F75 là lựa chọn lý tưởng cho game thủ chuyên nghiệp.', 1, 5),
-(41, 'Airpods 3', 'images/tai-nghe-bluetooth-airpods-3-lightning-charge-apple-mpny3-trang-2-750x500 (1).jpg', 2950000, 123, 'AirPods 3 là tai nghe không dây cao cấp của Apple, thiết kế gọn nhẹ, tinh tế với thân ngắn hơn và cảm ứng lực nhạy bén. Sản phẩm hỗ trợ âm thanh không gian (Spatial Audio) cho trải nghiệm âm thanh sống động, bao quanh. AirPods 3 được trang bị chip H1, mang lại khả năng kết nối nhanh chóng, ổn định, và chuyển đổi giữa các thiết bị Apple mượt mà. Thời lượng pin lên đến 6 giờ nghe liên tục, hộp sạc MagSafe cung cấp thêm 24 giờ sử dụng. Chống nước và mồ hôi đạt chuẩn IPX4, phù hợp cho luyện tập và di chuyển hàng ngày.\r\n', 1, 6),
-(42, 'Laptop HP Windows 11', 'images/surfacelaptop5_2 (1).jpg', 16700000, 123, 'Laptop HP chạy Windows 11 mang đến trải nghiệm mượt mà với giao diện hiện đại, tối ưu hóa cho đa nhiệm và năng suất. Được trang bị các bộ vi xử lý mạnh mẽ như Intel Core hoặc AMD Ryzen, kết hợp với RAM lớn và ổ cứng SSD, các laptop HP đảm bảo hiệu suất vượt trội cho công việc và giải trí. Tính năng bảo mật cao như nhận diện vân tay và camera IR, cùng với các cổng kết nối đa dạng, giúp người dùng linh hoạt và bảo mật hơn. Windows 11 tăng cường trải nghiệm gaming và sáng tạo nội dung.', 1, 2),
-(43, 'Microsoft Surface Laptop 13.8', 'images/71p-M3sPhhL (1).jpg', 19990000, 123, 'Microsoft Surface Laptop 13.8\" là một chiếc laptop mỏng nhẹ, sở hữu màn hình PixelSense cảm ứng 13.8 inch với độ phân giải cao, mang đến trải nghiệm hình ảnh sắc nét. Máy được trang bị vi xử lý Intel Core mạnh mẽ, hiệu suất ổn định cho công việc và giải trí. Thiết kế thanh lịch, cùng bàn phím có đèn nền, mang lại sự thoải mái khi sử dụng. Pin lâu dài giúp sử dụng cả ngày. Cài sẵn Windows 11, máy là lựa chọn lý tưởng cho người dùng cần tính di động và hiệu năng cao trong công việc và học tập.', 1, 2),
-(44, 'Apple Magic Keyboard', 'images/Ban-Phim-Apple-Magic-Keyboard-2-1 (1).jpg', 4999000, 100, 'Apple lần đầu giới thiệu bàn phím không dây vào năm 2007 và Apple Magic Keyboard 2 là thế hệ tiếp theo đã được nâng cấp. Apple Magic Keyboard 2 làm người dùng khá hài lòng với sự mỏng nhẹ và pin tích hợp có thể sạc lại giúp công việc trở nên thuận tiện hơn.\r\n\r\nThương hiệu: Apple\r\nLoại SP: Bàn phím\r\nChất liệu: Hợp kim Nhôm\r\nKích thước: 27.9 x 11.49 x (0.41-1.09) cm\r\nTrọng lượng: 0,231kg\r\nKết nối: Bluetooth 4.0, Lightning USB\r\nPin: Li-Ion\r\nThời gian sử dụng: 30 ngày\r\nThời gian sạc: 2 giờ\r\nHỗ trợ: Mac OS X 10.11\r\nBảo hành: 12 Tháng', 1, 5);
+(37, 'Laptop ASUS Vivobook 15', 'images/75759_laptop_hp_14s_ep0110tu__8c5k9pa____2_ (1).jpg', 13950000, 100, 'ASUS VivoBook 15 là một chiếc laptop đa dụng, phù hợp cho học tập, làm việc và giải trí, với thiết kế mỏng nhẹ, hiện đại. Máy được trang bị màn hình 15.6 inch Full HD với viền NanoEdge siêu mỏng, mang lại trải nghiệm hiển thị rộng rãi, sắc nét.\r\n\r\nCấu hình linh hoạt với bộ vi xử lý Intel Core hoặc AMD Ryzen (tùy phiên bản), kết hợp với RAM lên đến 16GB và ổ cứng SSD, giúp xử lý các tác vụ nhanh chóng và mượt mà. Bàn phím công thái học với đèn nền, hành trình phím êm ái, hỗ trợ làm việc trong điều kiện thiếu sáng.\r\n\r\nMáy có nhiều cổng kết nối, bao gồm USB-C, USB-A, HDMI, và đầu đọc thẻ microSD, đáp ứng nhu cầu đa dạng. Pin bền bỉ và hỗ trợ sạc nhanh, VivoBook 15 là lựa chọn đáng giá cho người dùng cần sự linh hoạt và hiệu năng ổn định.', 1, 1),
+(38, 'Airpods 2', 'images/image_2019-03-29_09-12-07_2.webp', 1800000, 123, 'AirPods 2 là tai nghe không dây của Apple, mang lại sự tiện lợi và chất lượng âm thanh ấn tượng. Sản phẩm sử dụng chip H1, giúp kết nối nhanh hơn và ổn định với các thiết bị Apple, đồng thời hỗ trợ điều khiển bằng giọng nói \"Hey Siri\".\r\n\r\nAirPods 2 có thiết kế nhỏ gọn, thoải mái, vừa vặn với tai người dùng. Thời lượng pin cho phép nghe nhạc liên tục 5 giờ, và hộp sạc cung cấp thêm 24 giờ sử dụng. Hộp sạc có hai phiên bản: sạc thường và sạc không dây, phù hợp với mọi nhu cầu. Đây là lựa chọn hoàn hảo cho trải nghiệm âm thanh tiện lợi, liền mạch và phong cách.', 1, 2),
+(39, 'Aula F75', 'images/61saIDfK1CL.jpg', 1999000, 100, 'Aula F75 là một bàn phím cơ chuyên dụng dành cho game thủ, nổi bật với thiết kế mạnh mẽ và hiệu suất cao. Bàn phím có layout full-size với 104 phím, phù hợp cho cả chơi game và làm việc. Trang bị switch cơ học (có nhiều loại để lựa chọn), Aula F75 mang lại cảm giác gõ nhạy, độ bền cao, và phản hồi tốt.\r\n\r\nĐặc biệt, hệ thống đèn RGB đa dạng với các chế độ tùy chỉnh giúp tăng tính thẩm mỹ và tạo không gian chơi game sống động. Bàn phím còn hỗ trợ anti-ghosting toàn phần, đảm bảo nhận đủ mọi thao tác. Với thiết kế khung kim loại chắc chắn và khả năng kết nối qua cổng USB, Aula F75 là lựa chọn lý tưởng cho game thủ chuyên nghiệp.', 1, 2),
+(42, 'Laptop HP Windows 11', 'images/surfacelaptop5_2 (1).jpg', 16700000, 123, 'Laptop HP chạy Windows 11 mang đến trải nghiệm mượt mà với giao diện hiện đại, tối ưu hóa cho đa nhiệm và năng suất. Được trang bị các bộ vi xử lý mạnh mẽ như Intel Core hoặc AMD Ryzen, kết hợp với RAM lớn và ổ cứng SSD, các laptop HP đảm bảo hiệu suất vượt trội cho công việc và giải trí. Tính năng bảo mật cao như nhận diện vân tay và camera IR, cùng với các cổng kết nối đa dạng, giúp người dùng linh hoạt và bảo mật hơn. Windows 11 tăng cường trải nghiệm gaming và sáng tạo nội dung.', 1, 1),
+(43, 'Microsoft Surface Laptop 13.8', 'images/71p-M3sPhhL (1).jpg', 19990000, 123, 'Microsoft Surface Laptop 13.8\" là một chiếc laptop mỏng nhẹ, sở hữu màn hình PixelSense cảm ứng 13.8 inch với độ phân giải cao, mang đến trải nghiệm hình ảnh sắc nét. Máy được trang bị vi xử lý Intel Core mạnh mẽ, hiệu suất ổn định cho công việc và giải trí. Thiết kế thanh lịch, cùng bàn phím có đèn nền, mang lại sự thoải mái khi sử dụng. Pin lâu dài giúp sử dụng cả ngày. Cài sẵn Windows 11, máy là lựa chọn lý tưởng cho người dùng cần tính di động và hiệu năng cao trong công việc và học tập.', 1, 1),
+(45, 'Airpods 2', 'images/tai-nghe-airpods-2.jpg', 40000000, 123, '123123123', 1, 2),
+(46, 'Apple Magic Keyboard', 'images/Ban-Phim-Apple-Magic-Keyboard-2-1.jpg', 40000000, 123123123, '123123123123123123213', 1, 2),
+(47, 'Dell XPS 13 (2024 Edition)', 'images/shopping.webp', 35990000, 123, 'Dell XPS 13 2024 là mẫu laptop cao cấp, nổi bật với thiết kế siêu mỏng nhẹ và viền màn hình InfinityEdge gần như không viền, mang lại trải nghiệm thị giác tuyệt vời trên màn hình 13.4 inch Full HD+. Máy được trang bị chip Intel Core i7 thế hệ 13 mạnh mẽ, RAM 16GB và SSD 512GB, đảm bảo hiệu suất mượt mà cho cả công việc và giải trí. Thân máy được chế tác từ nhôm nguyên khối, chỉ nặng 1.2kg, dễ dàng mang theo. Hệ thống tản nhiệt cải tiến và pin kéo dài đến 12 giờ giúp bạn làm việc cả ngày mà không lo gián đoạn.', 1, 1),
+(48, 'MacBook Air M2 (2024)', 'images/macbook_air_m2_1_1.webp', 28990000, 123, 'MacBook Air M2 2024 là laptop siêu nhẹ, chỉ 1.24kg, thiết kế sang trọng từ nhôm tái chế. Màn hình Retina 13.6 inch sắc nét, độ sáng 500 nits, hỗ trợ công nghệ True Tone. Chip Apple M2 mạnh mẽ giúp xử lý mượt mà các tác vụ, từ văn phòng đến sáng tạo nội dung. Với RAM 8GB và SSD 256GB, máy khởi động và vận hành cực nhanh. Pin dùng đến 18 giờ, hoàn hảo cho ngày dài làm việc. Bàn phím Magic Keyboard tích hợp Touch ID, hỗ trợ bảo mật tối ưu. Đây là lựa chọn lý tưởng cho học sinh, sinh viên và dân văn phòng.', 1, 1),
+(49, 'Asus ROG Strix G16', 'images/images.jpg', 47990000, 123, 'ROG Strix G16 là laptop gaming hàng đầu, được trang bị màn hình 16 inch QHD với tần số quét 165Hz, mang lại hình ảnh mượt mà và chi tiết. Chip Intel Core i9 thế hệ 13 và card đồ họa NVIDIA RTX 4060 giúp xử lý mượt mà mọi tựa game nặng. Với RAM 16GB và SSD 1TB, máy đảm bảo tốc độ cao và không gian lưu trữ lớn. Hệ thống tản nhiệt ROG Intelligent Cooling giữ máy luôn mát khi chơi game cường độ cao. Thiết kế hiện đại, đèn RGB tùy chỉnh, phù hợp cho game thủ chuyên nghiệp.', 1, 1),
+(52, 'MSI Prestige 14 Evo', 'images/71ocl27ruil.webp', 32990000, 123, 'MSI Prestige 14 Evo là laptop mỏng nhẹ dành cho dân văn phòng và sáng tạo nội dung. Máy có màn hình 14 inch Full HD với viền siêu mỏng, hiển thị màu sắc chuẩn xác. Trang bị chip Intel Core i7, RAM 16GB và SSD 512GB, máy hoạt động nhanh chóng, xử lý tốt các ứng dụng đồ họa. Thân máy làm từ hợp kim nhôm, nặng chỉ 1.2kg, dễ dàng mang theo. Công nghệ True Color tối ưu màu sắc, kết hợp với thời lượng pin lên đến 12 giờ, đáp ứng nhu cầu làm việc di động. Bảo mật vân tay giúp tăng cường sự an toàn.', 1, 1),
+(53, 'Tai nghe không dây Sony WF-1000XM5', 'images/tai-nghe-khong-day-truly-wireless-chong-on-sony-wf-1000xm5-1_1690426095.png', 5990000, 123, 'Tai nghe True Wireless cao cấp với công nghệ chống ồn chủ động hàng đầu. Âm thanh Hi-Res được tối ưu bởi driver Dynamic Driver X. Thời lượng pin lên đến 8 giờ sử dụng liên tục (24 giờ với hộp sạc). Thiết kế nhỏ gọn, ôm tai, chống nước IPX4, phù hợp để tập luyện hoặc sử dụng hàng ngày. Hỗ trợ điều khiển cảm ứng và kết nối đa thiết bị.', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -188,6 +227,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -222,22 +267,28 @@ ALTER TABLE `categories`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `users`
